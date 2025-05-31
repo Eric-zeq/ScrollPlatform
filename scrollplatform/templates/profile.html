@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+<!-- 重写该块为空，防止post展示 -->
+{% block include_posts %}{% endblock %}
+{% load static %}
+{% block profile_content %}
+<style>
+   #user_account_home {
+    width: 100%;
+    margin-left: 30%;
+    overflow: auto;
+    /* display: none; */
+}
+
+#user_account_home_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#user_account_home_header img {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+}
+
+#user_account_home_header_info {
+    margin-left: 50px;
+}
+
+#user_account_home_header_info h1 {
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+
+#user_account_home_header_info p{
+    color: #777;
+    margin: 0px;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+#user_account_home_header_info_bio{
+    height: 30px;
+    /* width: 100px; */
+    overflow: hidden;
+    text-align: justify;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+
+#user_account_home_header_info p:last-child {
+   font-size: 16px;
+   color: black;
+}
+
+
+
+#user_account_home_header_info a {
+    color: #777;
+    text-decoration: none;
+
+} 
+
+#home-content {
+    margin-top: 50px;
+}
+
+#home-content-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#home-content-menu a {
+    margin: 0 10px;
+    color: black;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
+    /* border: 1px solid black; */
+    width: 110px;
+    height: 40px;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin-right: 100px;
+    border-radius: 40px;
+    /* background-color: #f2f2f2; */
+    background-color: white;
+}
+
+#home-content-menu a:hover {
+    background-color: #f2f2f2;
+
+}
+
+#home-content-posts {
+    display: block;
+    text-align: center;
+}
+
+#home-content-collections {
+    display: none;
+    text-align: center;
+}
+
+#home-content-likes {
+    display: none;
+    text-align: center;
+}
+</style>
+<div id="user_account_home">
+    <div id="user_account_home_header">
+        <img src="{{ user.avatar.url }}" alt="user-image">
+        <div id="user_account_home_header_info">
+            <h1>{{ user.username }}</h1>
+            <p>Joined on {{ user.date_joined|date:"F d, Y" }}</p>
+
+            <P>Email:<span>&nbsp;{{ user.email }}</span></P>
+            <div id="user_account_home_header_info_bio"><span>Bio:&nbsp;&nbsp;</span>{{ user.bio }}</div>
+            <p><span>20&nbsp;</span></span><a href="">followers</a><span>&nbsp;&nbsp;&nbsp;&nbsp;58&nbsp;</span><a href="">following</a></p>
+        </div>
+    </div>
+    <div id="home-content">
+        <div id="home-content-menu">
+            <a id="home-content-menu-posts" style="background-color: #f2f2f2;" onclick="choose_home(this.id)" href="#">Posts</a>
+            <a id="home-content-menu-collections" onclick="choose_home(this.id)" href="#">Collections</a>
+            <a id="home-content-menu-likes" onclick="choose_home(this.id)" href="#">Likes</a>
+        </div>
+        <div id="home-content-posts">
+            No posts yet.
+        </div>
+        <div id="home-content-collections">
+            No collections yet.
+        </div>
+        <div id="home-content-likes">
+            No likes yet.
+        </div>
+    </div>
+</div>
+{% endblock %}

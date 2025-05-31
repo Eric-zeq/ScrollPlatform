@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stroll</title>
+    <!-- <link rel="stylesheet" href="index.css"> -->
+
+</head>
+<body>
+    <style>
+        .header{
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .header_logo {
+        margin-right: 25%;
+        }
+
+        .header_logo img:hover {
+            transform: scale(1.1);
+        }
+
+        .header_search {
+            background-color: #f2f2f2;
+            width: 400px;
+            height: 40px;
+            border-radius: 50px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+        .header_search form{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+        .header_search input {
+            width: 350px;
+            height: 30px;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background-color: #f2f2f2;
+        }
+        .header_search button {
+            background: none;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .header_search button img:hover {
+            transform: scale(1.2);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            /* align-items: center; */
+        }
+           
+        
+    </style>
+
+    <header class="header">
+        <div class="header_logo">
+            <a href="/" aria-label="return_main_page">
+            <img src="{% static 'img/logo/logo.jpg' %}" alt="web Logo" width="130" height="70" loading="lazy">
+            </a>
+        </div>
+        <div class="header_search">
+            <form action="/search" method="get" role="search">
+            <!-- <label for="search-input" class="visually-hidden">Search</label> -->
+            <input 
+                id="search-input" 
+                type="text" 
+                name="q" 
+                placeholder="Search..." 
+                aria-label="Search_area"
+            >
+            <button type="submit" aria-label="submit_search">
+                <img src="{% static 'img/logo/search.svg' %}" alt="search_svg" width="20" height="20">
+            </button>
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        <div class="nav_content">
+        {% include 'nav.html' %}
+        </div>
+        <div class="post_content">
+            
+            {% block include_posts %}
+            {% include 'posts.html' %}
+            {% endblock include_posts %}
+
+
+            {% block profile_content %}
+            {% endblock profile_content %}
+        </div>
+    </div>
+    {% block login_content %}
+    {% endblock login_content %}
+
+    {% block sendPost_content %}
+    {% endblock sendPost_content %}
+    
+    {% block edit_profile_content %}
+    {% endblock edit_profile_content %}
+
+    {% block post_detail %}
+    {% endblock post_detail %}
+
+    
+</body> 
+</html>
+</body>

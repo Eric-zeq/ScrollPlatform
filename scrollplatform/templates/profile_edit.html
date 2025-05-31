@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block edit_profile_content %}
+<style>
+     /* 遮罩层样式 */
+#overlay {
+    display: block; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
+    z-index: 1000; /* 确保遮罩层位于其他内容之上 */
+}
+.user_model {
+     /* display: none; */
+     border: 1px solid #ccc;
+     width: 800px;
+     height: 500px;
+     background-color: #fff;
+     border-radius: 20px;
+     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+     position: fixed;
+     top: 15%;
+     left: 25%;
+     z-index: 1001; /* 确保模态框位于遮罩层之上 */
+}
+.user_model_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_model_bg img{
+    width: 300px; 
+    height: 500px;
+    border-radius: 20px 0  0 20px ;
+}
+
+h2{
+    font-size: 40px;
+    margin-top: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;            
+}
+
+.model_content { 
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
+
+input.form-control1 {
+    width: 250px;
+    height: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+} 
+
+button.form-control1 {
+    height: 40px;
+    width: 250px;
+    margin-top: 20px;
+    background-color: #259A75;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#signup_bio {
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    width: 260px;
+    height: 50px;
+    font-size: 14px;
+}
+
+#preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#custom-file-upload {
+    width: 20px;
+    height: 20px;
+}
+
+#custom-file-upload:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+#offpage { 
+    position: absolute;
+    top: -20px;
+    left: 101%;
+}
+
+#offpage img {
+    width: 30px;
+    height: 30px;
+}
+
+#offpage img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('signup_avatar');
+    const customUpload = document.getElementById('custom-file-upload');
+    const previewAvatar = document.getElementById('preview');
+    // 点击自定义图标时触发文件选择
+    customUpload.addEventListener('click', function () {
+        fileInput.click();
+    });
+    // 当文件被选择时，显示预览
+    fileInput.addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewAvatar.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+});
+</script>
+<div id="overlay"></div>
+<div class="user_model">
+    <div class="user_model_content">
+        <div class="user_model_bg"><img src="{% static 'img/logo/pg.jpeg' %}" alt="login"></div>
+        <a id="offpage" href = '{% url "home" %}'><img src="{% static 'img/logo/off.svg' %}" alt="offpage"></a>
+        <div id="edit_profile_model_content" class="model_content">
+            <h2>Edit Profile</h2>
+            <form method="POST" enctype="multipart/form-data" action="{% url 'profile_edit' %}">
+                {% csrf_token %}
+                <div id="preview-avatar">
+                    <img id="preview" src="{{user.avatar.url}}" alt="Image Preview">
+                    <img id="custom-file-upload" src="{% static 'img/logo/camera.svg' %}" alt="Upload Image">
+                </div>
+                <input id="signup_avatar" type="file" name="avatar" accept="image/*" style="display: none;"><br>
+                <input class="form-control1" type="text" name="username" value="{{user.username}}" required><br>
+                <input class="form-control1" type="email" name="email" value="{{user.email}}" required><br>
+                <textarea id="signup_bio" name="bio" rows="3">{{user.bio}}</textarea><br>
+                <button class="form-control1" type="submit">Save Changes</button><br>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

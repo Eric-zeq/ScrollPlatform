@@ -1,0 +1,350 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block sendPost_content %}
+<style>
+#overlay {
+    display: block; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
+    z-index: 1000; /* 确保遮罩层位于其他内容之上 */
+}
+
+#content-close {
+    position:fixed;
+    top: 5%;
+    left: 15%;
+}
+
+#content-close img{
+    width: 30px;   
+    height: 30px;
+}
+
+#content-close img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+#post_content {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
+    left: 20%;
+    right: 20%;
+    overflow-y: auto; 
+    z-index: 1001;
+}
+
+#post_form {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+}
+
+#post_left {
+    position: relative;
+    width: 55%;
+    display: flex;
+    border: 1px solid #ccc;
+    justify-content: center;
+    align-items: center;
+}
+
+#post_image_logo {
+    width: 80px;
+    height: 80px;
+}
+
+#post_image_logo:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+
+}
+
+#preview {
+    height: auto;
+    width:90%;
+    max-width: 90%;
+    display: none;
+}
+
+#post_right {
+    padding-left: 20px;
+    padding-right: 10px;
+
+}
+
+#post_right_header {
+    display: flex;
+    align-items: center;
+    
+}
+
+#post_right_header img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+
+#post_title {
+    width: 93%;
+    height: 2%;
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 10px;
+    outline: none;
+    font-size: 15px;
+}
+
+#post_text {
+    margin-top: 10px;
+    width: 93%;
+    height: 200px;
+    resize: none;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+#post_tags_location {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#post_tags {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#post_tags a {
+    margin-right: 10px;
+    font-size: 13px;
+    color: #333;
+    text-decoration: none;
+}
+
+#post_tags a:hover {
+    text-decoration: underline;
+}
+
+#post_location {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#post_location img {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+#post_location input {
+    width: 50%;
+    height: 25px;
+    border: none;
+    padding: 5px;
+    outline: none;
+}
+
+#post_options {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    margin-top: 10px;
+
+}
+
+.post_options_class {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#post_options img {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+#post_options label {
+    font-size: small;
+    color: #333;
+}
+
+
+#post_options input {
+    width: 15px;
+    height: 15px;   
+    margin-left: auto;
+}
+
+#post_buttons {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    
+}
+
+#post_buttons img {
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
+}
+
+#post_buttons button {
+    background-color: #259A75;
+    color: #fff;
+    border: none;
+    padding: 10px 80px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+</style>
+<script>
+     document.addEventListener('DOMContentLoaded', function () {
+    const fileInput = document.getElementById('post_image');
+    const customUpload = document.getElementById('post_image_logo');
+    const previewAvatar = document.getElementById('preview');
+    const nextBtn = document.getElementById('next_image');
+    const preBtn = document.getElementById('pre_image');
+
+
+
+    // 点击自定义图标时触发文件选择
+    customUpload.addEventListener('click', function () {
+        fileInput.click();
+    });
+
+
+    let imageList = [];  // 存储所有选中图片的 base64 数据
+    let currentIndex = 0;
+
+    fileInput.addEventListener('change', function (event) {
+        // 隐藏自定义上传按钮
+        customUpload.style.display = 'none';
+        previewAvatar.style.display = 'block';
+        nextBtn.style.display = 'block';
+        preBtn.style.display = 'block';
+
+        const files = event.target.files;
+        if (!files || files.length === 0) return;
+        imageList = [];  // 清空之前的图片列表
+        currentIndex = 0;
+        let loadedCount = 0;
+
+        // 读取图片文件
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (!file.type.startsWith('image/')) continue;
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imageList.push(e.target.result);
+                loadedCount++;
+                // 第一张加载完成后立即显示
+                if (loadedCount === 1) {
+                    previewAvatar.src = imageList[currentIndex];
+                    
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+    // 切换图片按钮点击事件
+    nextBtn.addEventListener('click', function () {
+        if (imageList.length === 0) return;
+        currentIndex = (currentIndex + 1) % imageList.length;
+        previewAvatar.src = imageList[currentIndex];
+    });
+
+    // 上一张按钮点击事件
+    preBtn.addEventListener('click', function () {
+        if (imageList.length === 0) return;
+        currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;
+        previewAvatar.src = imageList[currentIndex];
+    });
+
+});
+
+</script>
+<div id="overlay"></div>
+<div id="send_post_model">
+    <div id="post_content">
+        <a id="content-close"  href="{% url 'home' %}"><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
+        <form id="post_form" method="post"  action="{% url 'sendPost_view' %}" enctype="multipart/form-data" >        
+        {% csrf_token %}
+            <div id="post_left">
+                <img id="post_image_logo" src="{% static 'img/logo/upload.svg' %}" alt="image">
+                <a id = 'pre_image' href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a>
+                <img id="preview" src="" alt="preview">
+                <a id="next_image" href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a>
+        </div>
+        <div id="post_right">
+            <div id="post_right_header">
+                <img src="{{user.avatar.url}}" alt="user avatar">
+                <h5>{{ user.username }}</h5>
+            </div>
+            <div>
+                <input  id="post_image" style="display: none;" type="file" name="post_images" accept="image/*" multiple>
+                <input id="post_title" type="text" name="title" placeholder="Post title">
+                <textarea id="post_text" name="content" placeholder="add your post here..."></textarea>
+                <div id="post_tags_location">
+                    <div id="post_tags">
+                        <a href="">#tags</a>
+                        <!-- <a href="">@username</a> -->
+                    </div>
+                    <!-- <div id="post_location">
+                        <img src="{% static 'img/logo/adress.svg' %}" alt="address">
+                        <input type="text" name="post_location" placeholder="Location">
+                    </div> -->
+                </div>
+                <div id="post_options">
+                    <div id="post_options_public"  class="post_options_class">
+                        <img src="{% static 'img/logo/public.svg' %}" alt="public">
+                        <label for="is_public">Public</label>
+                        <input type="checkbox" name="is_public" id="is_public">
+                    </div>
+                    <div class="post_options_class">
+                        <img src="{% static 'img/logo/noComment.svg' %}" alt="comment">
+                        <label for="allow_comment">Allow comment</label>
+                        <input type="checkbox" name="is_commentable" id="allow_comment">
+                    </div>
+                    <!-- <div class="post_options_class">
+                        <img src="{% static 'img/logo/hide.svg' %}" alt="like">
+                        <label for="hide_like">Hide likes</label>
+                        <input type="checkbox" name="hide_like" id="hide_like">
+                    </div>
+                    <div class="post_options_class">
+                        <img src="{% static 'img/logo/reject.svg' %}" alt="allow_copy">
+                        <label for="allow_copy">Allow copy</label>
+                        <input type="checkbox" name="allow_copy" id="allow_copy">
+                    </div>                    -->
+                </div>
+            </div>
+                <div id="post_buttons">
+                    <a href="#"><img src="{% static 'img/logo/saved.svg' %}" alt="saved"></a>
+                    <button type="submit">Post</button>
+                </div>
+        </div>
+        </form> 
+    </div>
+</div>
+{% endblock sendPost_content %}

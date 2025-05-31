@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block post_detail %}
+<style>
+#overlay {
+    display: block; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
+    z-index: 1000; /* 确保遮罩层位于其他内容之上 */
+}
+
+#content {
+    display: block; 
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    /* max-width: 100%; */
+    position: fixed;
+    top: 50px;
+    bottom: 50px;
+    left: 20%;
+    right: 20%;
+    z-index: 1001;
+    overflow-y: auto; 
+    height: 700px;
+    
+    
+}
+
+#content-close {
+    position:fixed;
+    top: 5%;
+    left: 15%;
+}
+
+#content-close img{
+    width: 30px;   
+    height: 30px;
+}
+
+
+#content-body {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    height: 100%;
+}
+
+#content-body-left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* 防止图片超出容器 */
+    width: 60%;
+    height: 100%;
+    background-color: #000;
+}
+#post-image {
+    width: 100%; /* 图片宽度填满容器 */
+    height: auto; /* 保持图片比例 */
+    object-fit: cover; /* 类似 background-size: cover 的效果 */
+}
+
+#content-body-right {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 10px 20px;
+}
+
+#content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    
+}
+
+#content-header-left {
+    display: flex;
+    align-items: center;
+}
+#content-header-left img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+#content-header-left h4 {
+    margin: 0;
+    margin-right: 20px;
+}
+
+#content-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: #259A75;
+
+}
+
+#focus_icon{
+    width: 20px;
+    height: 20px;
+}
+
+#focus_icon:hover {
+    transform: scale(1.2);
+}
+
+#share_icon {
+    width: 25px;
+    height: 25px;
+}
+
+#share_icon:hover {
+    transform: scale(1.2);
+}
+
+
+
+#post-details {
+    margin-top: 20px;
+}
+
+#post-details h4 {
+    margin: 0;
+    font-size: 20px;
+}
+
+#post-date {
+    color: #999;
+    font-size: 13px;
+
+}
+
+#post-details p {
+    margin: 10px 0;
+    /* font-size: 16px; */
+
+}
+
+
+#post-review {   
+    display: flex;        
+    /* padding: 20px 40px; */
+    height: 60px;
+    justify-content: space-between;       
+    align-items: center;
+}
+
+#post-review-left {
+    display: flex;
+    align-items: center;
+}
+
+#post-review-left img {
+    width:  25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+#post-review-left input {
+    margin-left: 10px;
+    height: 30px;
+    width: 120px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+#post-review-right {
+    display: flex;
+    align-items: center;
+}
+
+#post-review-right a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #999;
+    margin-left: 5px;
+}
+
+
+#post-review-right img {
+    width:  18px;
+    height: 20px;
+    /* margin-left: 10px; */
+    
+}
+
+#post-review-right img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.2);
+}
+
+#post-review1 {
+    display:  none;
+    padding: 10px;
+    height: 60px;
+    margin-top: auto;
+    margin-bottom: 10px;
+    align-items: center;
+
+}
+
+#post-review1 input {
+    height: 40px;
+    width: 70%;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    border-radius: 30px;
+    padding: 0 10px;
+}
+
+
+#post-review1-bottom-right img {
+    margin-left: 30px;
+    width: 25px;
+    height: 25px;
+}
+
+#post-review1-bottom-left {
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+}
+
+#post-review1-bottom-left a:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.2);
+} 
+
+
+#post-review1-bottom-left a:nth-child(1) {
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #259A75;    
+    width: 80px;; 
+    height: 40px;
+    border-radius:  20px;
+    color: #fff;
+    margin-right: 15px;
+}
+
+#post-review1-bottom-left a:nth-child(2) {
+    text-decoration: none;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;    
+    width: 80px;; 
+    height: 40px;
+    border-radius:  20px;
+    color: #000;
+    border: #999 solid 1px;
+}
+
+#content-footer {
+    padding: 20px;
+    padding-top: 0px;
+}
+
+#comment-header p {
+    margin: 0;
+}
+
+#comment-header p:nth-child(1) {
+    font-size: 13px;
+    color: #999;
+}
+
+
+#comment-details {
+    margin-top: 20px;
+    display: flex;
+   
+}
+
+#comment-details img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+#comment-content {
+    margin-left: 20px;
+}
+
+
+#main-comment p:nth-child(1) {
+    color: #999;
+    font-size: 15px;
+}
+
+#main-comment p:nth-child(2) {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+#main-comment p:nth-child(3) {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #999;
+}
+
+#main-comment img {
+    margin-top: 10px;
+    width: 13px;
+    height: 13px;
+}
+
+#main-comment img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.2);
+
+} 
+
+#main-comment span {
+    color: #999;
+    font-size: 10px;           
+}
+
+#sub-comment {
+    margin-top: 10px;
+    display: flex;
+}
+
+#sub-comment img {
+    width: 20px;
+    height: 20px;
+}
+
+#sub-comment-content {
+    margin-left: 10px;
+}
+
+#sub-comment-content p:nth-child(1) {
+    color: #999;
+    font-size: 10px;
+}
+
+#sub-comment-content p:nth-child(2) {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+#sub-comment-content p:nth-child(3) {
+    margin-top: 10px;
+    font-size: 8px;
+    color: #999;
+}
+
+#sub-comment-content img {
+    width: 10px;
+    height: 10px;
+}
+
+#sub-comment-content img:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    transform: scale(1.2);
+}
+#sub-comment-content span {
+    color: #999;
+    font-size: 8px;           
+}
+
+#sub-comment-insert-btn {
+    color: #259A75;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+</style>
+<div id="overlay"></div>
+<div id="content">
+    <a id="content-close" href='{% url "home" %}'><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
+    <div id="content-body">
+        <div id="content-body-left">
+                {% with first_image=post.images.all|first %}
+                        {% if first_image %}
+                            <img id="post-image" src="{{ first_image.image.url }}" alt="{{ post.title }}">
+                        {% else %}
+                            <p>No image available</p>
+                        {% endif %}
+                {% endwith %}             
+        </div>
+        <div id="content-body-right">
+            <div id="content-header">
+                <div id="content-header-left">
+                    <img src="{{ post.author.avatar.url }}" alt="user-image">
+                    <h4>{{post.author.username}}</h4>
+                </div>
+                <div id="content-header-right">
+                    <img id="focus_icon" src="{% static 'img/logo/fo.svg' %}" alt="focus">
+                </div>        
+            </div>
+            <div id="post-details">
+                <h4>{{post.title}}</h4>
+                <div>
+                    <p>{{post.content}}</p>
+                    <p id="post-date">Edited on {{ post.updated_at|date:"Y-m-d" }}</p>
+                </div>
+            </div>
+            {% if user.is_authenticated %}
+            <div id="post-review"> 
+                <div id="post-review-left">
+                    <img src="{{ user.avatar.url }}" alt="user-image">
+                    <input onfocus="writeReview()" type="text" id="comment-input" placeholder="Write a comment...">
+                </div>
+                <div id="post-review-right">
+                    <a href="#">
+                        <img src="{% static 'img/logo/like.svg' %}" alt="like">
+                        <span>10 &nbsp;&nbsp;</span>
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'img/logo/love.svg' %}" alt="love">
+                        <span>30&nbsp;&nbsp;</span>
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'img/logo/review.svg' %}" alt="comment">
+                        <span>10&nbsp;&nbsp;</span>
+                    </a>
+                    <a href="#">
+                        <img src="{% static 'img/logo/share.svg' %}" alt="share_icon ">
+                    </a>
+                    
+                </div>                 
+            </div>
+            {% endif %}        
+        </div>  
+    </div>
+</div>
+{% endblock %}

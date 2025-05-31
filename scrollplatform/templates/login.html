@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block login_content %}
+<style>
+ /* 遮罩层样式 */
+#overlay {
+    display: block; /* 默认隐藏 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 半透明黑色 */
+    z-index: 1000; /* 确保遮罩层位于其他内容之上 */
+}
+.user_model {
+     /* display: none; */
+     border: 1px solid #ccc;
+     width: 800px;
+     height: 500px;
+     background-color: #fff;
+     border-radius: 20px;
+     box-shadow: 0 0 10px rgba(0,0,0,0.3);
+     position: fixed;
+     top: 15%;
+     left: 25%;
+     z-index: 1001; /* 确保模态框位于遮罩层之上 */
+}
+.user_model_content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_model_bg img{
+    width: 300px; 
+    height: 500px;
+    border-radius: 20px 0  0 20px ;
+}
+#login_model_content {
+    width: 500px;
+    height: 500px;
+    text-align: center;
+}
+
+h2{
+    font-size: 40px;
+    margin-top: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;            
+}
+
+.model_content { 
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    display: none;
+}
+
+/* #sign_up_model_content h2{
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;            
+} */
+
+.form-control {
+    width: 300px;
+    height: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-control[type='email'] {
+    width: 300px;
+    height: 30px;
+    margin-top:  30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button.form-control {
+    height: 40px;
+    width: 320px;
+    margin-top: 40px;
+    background-color: #259A75;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#signup_link {
+    font-size: 16px; 
+    font-weight: bold;
+    color: #259A75;
+    text-decoration: none;
+}
+
+#signup_text {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+
+#login_error_message {
+    /* margin: 0px; */
+    padding: 0px;
+    color: red;
+    display: none;
+}
+
+#forgot_password_link { 
+    font-size: 14px;
+    color: #259A75;
+    text-decoration: none;
+    margin-left: 40%;
+
+}
+
+input.form-control1 {
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+} 
+
+button.form-control1 {
+    height: 40px;
+    width: 320px;
+    margin-top: 10px;
+    background-color: #259A75;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#signup_avatar{
+    margin-bottom: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#verifact_code_link { 
+    margin-left: 18%;
+    width: 320px;
+    height: 40px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+#verifact_code_link input {
+    width: 60%;
+    height: 25%;
+    padding:10px;
+    border: none;
+    outline: none;
+}
+
+#verifact_code_link a {
+   font-size: 12px;
+   color: #259A75;
+   text-decoration: none;
+}
+
+#conditions {
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#conditions a {
+    color: #259A75;
+    text-decoration: none;
+}
+
+#login_text {
+    font-size: 14px;
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+#login_link {
+    font-size: 16px;
+    color: #259A75;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#signup_bio {
+    border: 1px solid #ccc;
+    border-radius: 5px; 
+    width: 250px;
+    height: 50px;
+    font-size: 14px;
+}
+
+#offpage { 
+    position: absolute;
+    top: -20px;
+    left: 101%;
+}
+
+#offpage img {
+    width: 30px;
+    height: 30px;
+}
+
+#offpage img:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+
+
+</style>
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    // 获取模块和链接元素
+    const loginModule = document.getElementById('login_model_content');
+    const registerModule = document.getElementById('sign_up_model_content');
+    const switchToRegisterLink = document.getElementById('signup_link');
+    const switchToLoginLink = document.getElementById('login_link');
+    // 点击“注册”链接时隐藏登录模块，显示注册模块
+    switchToRegisterLink.addEventListener('click', function (event) {
+        event.preventDefault(); // 阻止默认跳转行为
+        loginModule.style.display = 'none';
+        registerModule.style.display = 'block';
+    });
+    // 点击“登录”链接时隐藏注册模块，显示登录模块
+    switchToLoginLink.addEventListener('click', function (event) {
+        event.preventDefault(); // 阻止默认跳转行为
+        registerModule.style.display = 'none';
+        loginModule.style.display = 'block';
+    });
+}); 
+</script>
+<div id="overlay"></div>
+<div class="user_model">
+    <div class="user_model_content">
+        <div class="user_model_bg"><img src="{% static 'img/logo/pg.jpeg' %}" alt="login"></div>
+        <a id="offpage" href = '{% url "home" %}'><img src="{% static 'img/logo/off.svg' %}" alt="offpage"></a>
+        <div id="login_model_content">
+            <h2>Login</h2>
+            <form  id="login_form"  method="post" action="{% url 'login' %}">
+                 {% csrf_token %}
+                <input id="login_email" name="username" class="form-control" type="email" placeholder="Email"><br>
+                <input id="login_password" name="password" class="form-control" type="password" placeholder="Password"> <br>
+                <a id="forgot_password_link" href="">Forgot password?</a>
+                <p id="login_error_message">Incorrect email or password.</p>
+                <button class="form-control" type="submit">Login</button><br>
+                <p id="signup_text">Don't have an account? <a id="signup_link">Sign up</a></p>
+            </form>
+        </div>
+        <div id="sign_up_model_content" class="model_content">
+            <h2>Sign up</h2>
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <input class="form-control1" type="text" name="username" placeholder="Username" required><br>
+                <input class="form-control1" type="email" name="email" placeholder="Email" required><br>
+                <input class="form-control1" type="password" name="password1" placeholder="Password" required><br>
+                <input class="form-control1" type="password" name = "password2" placeholder="Verify Password" required><br>
+                <div id="conditions">
+                    <input type="checkbox" name="conditions_checkbox" id="conditions_checkbox">
+                    <label for="conditions_checkbox">I alread read and accept the <a href="">terms and conditions</a></label>
+                </div>
+                <button class="form-control1" type="submit">Sign up</button><br>
+                <p id="login_text">Already have an account? <a id="login_link">Login</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock login_content %}
