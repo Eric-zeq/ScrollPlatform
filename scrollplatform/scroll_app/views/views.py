@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate,logout
 from django.contrib.auth.decorators import login_required
 from ..forms.user import LoginForm, RegisterForm, UserEditForm
 from ..forms.post import PostForm
-from ..models.models import Post, CustomUser, PostImage
+from ..models.models import Post, PostImage,Comment,LikesPost,CollectPost,CustomUser,flowsUser
 
 # Create your views here.
 def home(request):
@@ -52,7 +52,15 @@ def register_view(request):
 
 @login_required
 def profile_view(request):
-    return render(request, 'profile.html', {'user': request.user})
+    follows = flowsUser.objects.filter(follower=request.user).count()
+    followed = flowsUser.objects.filter(following=request.user).count()
+    posts = Post.objects.filter(author=request.user).order_by('-created_at')
+    post_likes = LikesPost.objects.filter(user=request.user).order_by('-created_at')
+    post_collects = CollectPost.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'profile.html', {'user': request.user, 
+                                            'follows': follows, 'followed': followed,
+                                             'posts': posts, 
+                                             'post_likes': post_likes, 'post_collects': post_collects})
 
 def logout_view(request):
     logout(request)
@@ -94,4 +102,77 @@ def sendPost_view(request):
 
 def post_detail_view(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    return render(request, 'post_detail.html', {'post': post})
+    comments = Comment.objects.filter(post=post,parent_comment=None).prefetch_related('children_comments','author').order_by('created_at')
+    likes = LikesPost.objects.filter(post=post)
+    collects = CollectPost.objects.filter(post=post)
+    is_liked = LikesPost.objects.filter(post=post, user=request.user).exists()
+    is_collected = CollectPost.objects.filter(post=post, user=request.user).exists()
+    is_followed = flowsUser.objects.filter(follower=request.user, following=post.author).exists()
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 
+                                                'likes': likes, 'collects': collects, 
+                                                'is_liked': is_liked, 'is_collected': is_collected,
+                                                 'is_followed': is_followed})
+
+def submit_comment(request):
+    if request.method == 'POST':
+        print(request.POST)
+        content = request.POST.get('content')
+        post_id = request.POST.get('post_id')
+        # print(content, post_id)
+        parent_id = request.POST.get('parent_id', None)
+        post = get_object_or_404(Post, pk=post_id)
+        parent_comment = get_object_or_404(Comment, pk=parent_id) if parent_id else None
+        comment = Comment.objects.create(
+            content=content,
+            author=request.user,
+            post=post,
+            parent_comment=parent_comment
+        )
+        print(comment)
+        return redirect('post_detail', post_id=post_id)
+    else:
+        return redirect('home')
+
+def toggle_like(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Post, pk=post_id)
+        user = request.user
+        like_post, created = LikesPost.objects.get_or_create(post=post, user=user)
+
+        if created:
+            like_post.save()
+        else:
+            like_post.delete()
+        
+        return redirect('post_detail', post_id=post_id)
+    else:
+        return redirect('home')
+
+def toggle_collect(request):
+    if request.method == 'POST':
+        post_id = request.POST.get('post_id')
+        post = get_object_or_404(Post, pk=post_id)
+        user = request.user
+        collect_post, created = CollectPost.objects.get_or_create(post=post, user=user)
+        if created:
+            collect_post.save()
+        else:
+            collect_post.delete()
+        return redirect('post_detail', post_id=post_id)
+    else:
+        return redirect('home')
+
+def toggle_follow(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        post_id = request.POST.get('post_id')
+        user = get_object_or_404(CustomUser, pk=user_id)
+        follow_user, created = flowsUser.objects.get_or_create(follower=request.user, following=user)
+        if created:
+            follow_user.save()
+        else:
+            follow_user.delete()
+        return redirect('post_detail', post_id=post_id)
+    else:
+        return redirect('home')

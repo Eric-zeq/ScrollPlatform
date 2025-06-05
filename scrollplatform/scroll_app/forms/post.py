@@ -1,5 +1,5 @@
 from django import forms
-from ..models.models import Post
+from ..models.models import Post, Comment
 
 # class MultipleFileInput(forms.ClearableFileInput):
 #     allow_multiple_selected = True  # 关键属性
@@ -30,5 +30,6 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content', 'is_public', 'is_commentable']
         
+
 
 
