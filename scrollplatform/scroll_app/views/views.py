@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from ..forms.user import LoginForm, RegisterForm, UserEditForm
 from ..forms.post import PostForm
 from ..models.models import Post, PostImage,Comment,LikesPost,CollectPost,CustomUser,flowsUser
+from itertools import chain
+from django.db.models import Value
+from django.db.models.fields import CharField 
 
 # Create your views here.
 def home(request):
@@ -176,3 +179,19 @@ def toggle_follow(request):
         return redirect('post_detail', post_id=post_id)
     else:
         return redirect('home')
+    
+def notification_view(request):
+    user_posts = Post.objects.filter(author=request.user).order_by('-created_at')
+    comments = Comment.objects.filter(post__in=user_posts).order_by('-created_at')
+    # 获取用户相关帖子的所有点赞和收藏
+    likes = LikesPost.objects.filter(post__in=user_posts).annotate(action_type=Value('like', output_field=CharField()))
+    collects = CollectPost.objects.filter(post__in=user_posts).annotate(action_type=Value('collect', output_field=CharField()))
+    # 合并与排序（Python 层面）
+    combined = sorted(
+        chain(likes, collects),
+        key=lambda x: x.created_at,
+        reverse=True
+    )
+    follows = flowsUser.objects.filter(following=request.user).order_by('-created_at')
+    print(follows)
+    return render(request, 'notification.html', {'comments': comments, 'combined': combined, 'follows': follows})

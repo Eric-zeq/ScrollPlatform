@@ -173,7 +173,7 @@
                     <img src="{% static 'img/logo/post.svg' %}" alt="post">
                     <span>Post</span>
                 </li>
-        <li class="nav-item" data-url="#"><img src="{% static 'img/logo/notificaiton.svg' %}" alt="notificaiton">
+        <li class="nav-item" data-url="{% if request.user.is_authenticated %}{% url 'notification' %}{% else %}{% url 'login' %}{% endif %}"><img src="{% static 'img/logo/notificaiton.svg' %}" alt="notificaiton">
                     <span>Notificaiton</span>
                 </li>
          {% if user.is_authenticated %}

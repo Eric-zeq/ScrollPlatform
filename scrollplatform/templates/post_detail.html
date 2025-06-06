@@ -58,12 +58,48 @@
     background-color: #000;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+    overflow: hidden;
+    position: relative;
     
 }
-#post-image {
+
+#image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.post-image {
+    position: absolute; /* 所有图片绝对定位重叠在一起 */
+    top: 0;
+    left: 0;
     width: 100%; /* 图片宽度填满容器 */
-    height: auto; /* 保持图片比例 */
-    object-fit: cover; /* 类似 background-size: cover 的效果 */
+    height: 100%; /* 保持图片比例 */
+    object-fit: contain; /* 类似 background-size: cover 的效果 */
+    object-position: center;
+    display: none;
+}
+
+
+
+#prev-btn, #next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2em;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
+#prev-btn {
+    left: 10px;
+}
+#next-btn {
+    right: 10px;
 }
 
 #content-body-right {
@@ -419,6 +455,33 @@
    this.style.height = 'auto'; // 重置高度
    this.style.height = (this.scrollHeight) + 'px';
  });
+
+   
+    const images = document.querySelectorAll(".post-image");
+    let currentIndex = 0;
+    function showImage(index) {
+        images.forEach((img, i) => {
+            img.style.display = i === index ? "block" : "none";
+        });
+    }
+    document.getElementById("next-btn").addEventListener("click", function() {
+        if (currentIndex < images.length - 1) {
+            currentIndex++;
+            showImage(currentIndex);
+        }
+    });
+    document.getElementById("prev-btn").addEventListener("click", function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            showImage(currentIndex);
+        }
+    });
+    // 默认显示第一张图
+    if (images.length > 0) {
+        showImage(currentIndex);
+    }
+
+
  
 }); 
 
@@ -455,13 +518,14 @@
     <a id="content-close" href='{% url "home" %}'><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
     <div id="content-body">
         <div id="content-body-left">
-                {% with first_image=post.images.all|first %}
-                        {% if first_image %}
-                            <img id="post-image" src="{{ first_image.image.url }}" alt="{{ post.title }}">
-                        {% else %}
-                            <p>No image available</p>
-                        {% endif %}
-                {% endwith %}             
+            <div id="image-container">
+                <button id="prev-btn">&#10094;</button>
+                {% for image in post.images.all %}
+                <img class="post-image" src="{{ image.image.url }}" alt="{{ post.title }}">
+                 <!-- <div class="post-image" style="background-image: url('{{ image.image.url }}');"></div> -->
+                {% endfor %}
+                <button id="next-btn">&#10095;</button>
+            </div>
         </div>
         <div id="content-body-right">
             <div id="content-header">

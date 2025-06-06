@@ -70,6 +70,17 @@
 
 }
 
+.prev-btn, .next-btn {
+    transform: translateY(-50%);
+    font-size: 2em;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1002;
+}
+
 #preview {
     height: auto;
     width:90%;
@@ -293,10 +304,12 @@
         {% csrf_token %}
             <div id="post_left">
                 <img id="post_image_logo" src="{% static 'img/logo/upload.svg' %}" alt="image">
-                <a id = 'pre_image' href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a>
+                <!-- <a id = 'pre_image' href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a> -->
+                <input type="button" id = 'pre_image' class="prev-btn" style="display: none;" value="&#10094;"/>
                 <img id="preview" src="" alt="preview">
-                <a id="next_image" href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a>
-        </div>
+                <!-- <a id="next_image" href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a> -->
+                <input type="button" id="next_image" class="next-btn" style="display: none;" value="&#10095;">
+            </div>
         <div id="post_right">
             <div id="post_right_header">
                 <img src="{{user.avatar.url}}" alt="user avatar">

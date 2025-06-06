@@ -14,7 +14,8 @@ urlpatterns = [
     path('post_detail/<int:post_id>', views.post_detail_view, name='post_detail'),
     path('add_like', views.toggle_like, name='like_post'),
     path('add_collect', views.toggle_collect, name='collect_post'),
-    path('add_follow', views.toggle_follow, name='follow_user')
+    path('add_follow', views.toggle_follow, name='follow_user'),
+    path('notification', views.notification_view, name='notification')
 
     
 ]
