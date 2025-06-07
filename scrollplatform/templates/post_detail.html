@@ -456,7 +456,40 @@
    this.style.height = (this.scrollHeight) + 'px';
  });
 
-   
+
+
+ 
+}); 
+
+ function replyComment(comment_id) {
+    const reviewModule = document.getElementById('post-review');
+    const reviewModule1 = document.getElementById('post-review1');
+    reviewModule.style.display = 'none';
+    reviewModule1.style.display = 'block';
+    const commentForm = document.getElementById('commentForm');
+    commentForm.appendChild(document.createElement("input"));
+    commentForm.lastElementChild.type = "hidden";
+    commentForm.lastElementChild.name = "parent_id";
+    commentForm.lastElementChild.value = comment_id;
+ }
+
+ function viewAllSubComments(comment_id) {
+    const viewBtn = document.getElementById('sub-comment-btn-'+comment_id);
+    const firstsubcomment = document.getElementById('first-subsub-comment');
+    const allsubcomment = document.getElementById('sub-comment-all-'+comment_id);
+        viewBtn.style.display = 'none';
+        firstsubcomment.style.display = 'block';
+        allsubcomment.style.display = 'block';
+ }
+
+ function fillSVG(id,color){
+    const svg = document.getElementById(id);
+    svg.style.fill = color;
+ }
+
+
+ //图片切换
+ window.onload = function() {
     const images = document.querySelectorAll(".post-image");
     let currentIndex = 0;
     function showImage(index) {
@@ -480,35 +513,7 @@
     if (images.length > 0) {
         showImage(currentIndex);
     }
-
-
- 
-}); 
-
- function replyComment(comment_id) {
-    const reviewModule = document.getElementById('post-review');
-    const reviewModule1 = document.getElementById('post-review1');
-    reviewModule.style.display = 'none';
-    reviewModule1.style.display = 'block';
-    const commentForm = document.getElementById('commentForm');
-    commentForm.appendChild(document.createElement("input"));
-    commentForm.lastElementChild.type = "hidden";
-    commentForm.lastElementChild.name = "parent_id";
-    commentForm.lastElementChild.value = comment_id;
  }
-
- function viewAllSubComments(comment_id) {
-    const viewBtn = document.getElementById('sub-comment-btn-'+comment_id);
-    const allsubcomment = document.getElementById('sub-comment-all-'+comment_id);
-        viewBtn.style.display = 'none';
-        allsubcomment.style.display = 'block';
- }
-
- function fillSVG(id,color){
-    const svg = document.getElementById(id);
-    svg.style.fill = color;
- }
-
 
 
 </script>
@@ -521,8 +526,7 @@
             <div id="image-container">
                 <button id="prev-btn">&#10094;</button>
                 {% for image in post.images.all %}
-                <img class="post-image" src="{{ image.image.url }}" alt="{{ post.title }}">
-                 <!-- <div class="post-image" style="background-image: url('{{ image.image.url }}');"></div> -->
+                <img class="post-image" src="{{image.image.url}}" alt="{{ post.title }}">
                 {% endfor %}
                 <button id="next-btn">&#10095;</button>
             </div>
@@ -533,18 +537,20 @@
                     <img src="{{ post.author.avatar.url }}" alt="user-image">
                     <h4>{{post.author.username}}</h4>
                 </div>
+                {% if user.is_authenticated %}
                 <form id="content-header-right" action="{% url 'follow_user' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name = 'user_id' value ='{{post.author.user_id}}'>
                     <input type="hidden" name = 'post_id' value ='{{post.post_id}}'>
                     <button type="submit">
-                    {% if is_followed %}
-                    <img id="focus_icon" src="{% static 'img/logo/unfo.svg' %}" alt="unfocus">
-                    {% else %}
+                    {% if not is_followed %}
                     <img id="focus_icon" src="{% static 'img/logo/fo.svg' %}" alt="focus">
+                    {% else %}
+                    <img id="focus_icon" src="{% static 'img/logo/unfo.svg' %}" alt="unfocus">
                     {% endif %}
                     </button>
-                </form>        
+                </form>
+                {% endif %}        
             </div>
             <div id="post-details">
                 <h4>{{post.title}}</h4>
@@ -580,19 +586,23 @@
                                         <button onclick="replyComment('{{first_sub_comment.comment_id}}')"><img src="{% static 'img/logo/review.svg' %}" alt="reply">
                                             <span>reply</span>
                                         </button>
+                                        {% if comment.children_comments.count > 1%}
                                         <button class="sub-comment-btn" id="sub-comment-btn-{{comment.comment_id}}" onclick="viewAllSubComments('{{comment.comment_id}}')"><span>View all</span></button>
+                                        {%endif%}
                                     </div>
                                 </div>
-                                {% for sub_sub_comment in first_sub_comment.children_comments.all %}
-                                <div class="sub-comment-details">
-                                    <img src="{{sub_sub_comment.author.avatar.url}}" alt="avatar">
-                                    <div class="sub-comment-content">
-                                        <p>{{sub_sub_comment.author.username}}</p>
-                                        <p>Reply to <span style="color: #999;">{{first_sub_comment.author.username}}</span>:  {{sub_sub_comment.content}}</p>
-                                        <p>{{sub_sub_comment.created_at|date:"Y-m-d"}}</p>
-                                    </div>  
+                                <div id="first-subsub-comment" style="display: none;">
+                                    {% for sub_sub_comment in first_sub_comment.children_comments.all %}
+                                    <div class="sub-comment-details">
+                                        <img src="{{sub_sub_comment.author.avatar.url}}" alt="avatar">
+                                        <div class="sub-comment-content">
+                                            <p>{{sub_sub_comment.author.username}}</p>
+                                            <p>Reply to <span style="color: #999;">{{first_sub_comment.author.username}}</span>:  {{sub_sub_comment.content}}</p>
+                                            <p>{{sub_sub_comment.created_at|date:"Y-m-d"}}</p>
+                                        </div>  
+                                    </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                                 {% endwith %}
                                 <div  id="sub-comment-all-{{comment.comment_id}}" style="display: none;">
                                     {% for sub_comment in comment.children_comments.all|slice:"1:" %}

@@ -7,6 +7,7 @@ from ..models.models import Post, PostImage,Comment,LikesPost,CollectPost,Custom
 from itertools import chain
 from django.db.models import Value
 from django.db.models.fields import CharField 
+from django.contrib import messages
 
 # Create your views here.
 def home(request):
@@ -25,12 +26,17 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
         if form.is_valid():
+            print('dddddddddeee')
             email = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
                 return redirect('home')  # 登录成功后跳转到个人资料页面
+            else:
+                return render(request, 'login.html', {'form': form})
+        else:
+            return render(request, 'login.html', {'form': form})
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
@@ -46,12 +52,35 @@ def register_view(request):
             return redirect('home')  # 跳转到个人资料页面
         else:
             # 打印或返回表单错误信息
-            print(form.errors)
-            return render(request, 'login.html', {'form': form})
+            print(form)
+            return render(request, 'login.html', {'form': form,'show_signup': True,})
     else:
         form = RegisterForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', {'form': form,'show_signup': True})
 
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+#forgot password
+def forgot_password_view(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        new_password = request.POST.get('password1')
+        try:
+            user = CustomUser.objects.get(email=email)
+            # 如果密码为空
+            if not new_password:
+                messages.error(request, "Please enter a new password.")
+                return render(request, 'login.html', {'show_forget': True, 'email': email})
+            # 设置新密码
+            user.set_password(new_password)
+            user.save()
+            return redirect('login')  # 跳转到登录页面
+        except CustomUser.DoesNotExist:
+            messages.error(request, "Email does not exist.")
+            return render(request, 'login.html', {'show_forget': True, 'email': email})
+    return render(request, 'login.html', {'show_forget': True})
 
 @login_required
 def profile_view(request):
@@ -65,9 +94,6 @@ def profile_view(request):
                                              'posts': posts, 
                                              'post_likes': post_likes, 'post_collects': post_collects})
 
-def logout_view(request):
-    logout(request)
-    return redirect('home')
 
 def profile_edit_view(request):
     if request.method == 'POST':
@@ -82,6 +108,7 @@ def profile_edit_view(request):
     }
     return render(request, 'profile_edit.html', context)
 
+
 def sendPost_view(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
@@ -91,7 +118,6 @@ def sendPost_view(request):
             post = post_form.save(commit=False)
             post.author = request.user
             post.save()
-
             images = request.FILES.getlist('post_images')
             for image in images:
                 PostImage.objects.create(post=post, image=image)
@@ -108,13 +134,25 @@ def post_detail_view(request, post_id):
     comments = Comment.objects.filter(post=post,parent_comment=None).prefetch_related('children_comments','author').order_by('created_at')
     likes = LikesPost.objects.filter(post=post)
     collects = CollectPost.objects.filter(post=post)
-    is_liked = LikesPost.objects.filter(post=post, user=request.user).exists()
-    is_collected = CollectPost.objects.filter(post=post, user=request.user).exists()
-    is_followed = flowsUser.objects.filter(follower=request.user, following=post.author).exists()
-    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 
-                                                'likes': likes, 'collects': collects, 
-                                                'is_liked': is_liked, 'is_collected': is_collected,
-                                                 'is_followed': is_followed})
+    # 初始值设置为 None 或 False
+    is_liked = False
+    is_collected = False
+    is_followed = False
+    # 只有用户登录了才进行查询
+    if request.user.is_authenticated:
+        is_liked = LikesPost.objects.filter(post=post, user=request.user).exists()
+        is_collected = CollectPost.objects.filter(post=post, user=request.user).exists()
+        is_followed = flowsUser.objects.filter(follower=request.user, following=post.author).exists()
+    
+    return render(request, 'post_detail.html', {
+        'post': post,
+        'comments': comments,
+        'likes': likes,
+        'collects': collects,
+        'is_liked': is_liked,
+        'is_collected': is_collected,
+        'is_followed': is_followed,
+    })
 
 def submit_comment(request):
     if request.method == 'POST':

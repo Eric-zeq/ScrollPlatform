@@ -114,6 +114,11 @@ button.form-control1 {
     transform: scale(1.2);
 }
 
+.signup_error p {
+    margin: 0px;
+    color: red;
+}
+
 </style>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -152,7 +157,6 @@ button.form-control1 {
                 </div>
                 <input id="signup_avatar" type="file" name="avatar" accept="image/*" style="display: none;"><br>
                 <input class="form-control1" type="text" name="username" value="{{user.username}}" required><br>
-                <input class="form-control1" type="email" name="email" value="{{user.email}}" required><br>
                 <textarea id="signup_bio" name="bio" rows="3">{{user.bio}}</textarea><br>
                 <button class="form-control1" type="submit">Save Changes</button><br>
             </form>
