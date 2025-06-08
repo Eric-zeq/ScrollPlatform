@@ -299,7 +299,7 @@
 <div id="overlay"></div>
 <div id="send_post_model">
     <div id="post_content">
-        <a id="content-close"  href="{% url 'home' %}"><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
+        <a id="content-close"  href="javascript:history.back()"><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
         <form id="post_form" method="post"  action="{% url 'sendPost_view' %}" enctype="multipart/form-data" >        
         {% csrf_token %}
             <div id="post_left">
@@ -333,12 +333,12 @@
                     <div id="post_options_public"  class="post_options_class">
                         <img src="{% static 'img/logo/public.svg' %}" alt="public">
                         <label for="is_public">Public</label>
-                        <input type="checkbox" name="is_public" id="is_public">
+                        <input type="checkbox" name="is_public" id="is_public" checked>
                     </div>
                     <div class="post_options_class">
                         <img src="{% static 'img/logo/noComment.svg' %}" alt="comment">
                         <label for="allow_comment">Allow comment</label>
-                        <input type="checkbox" name="is_commentable" id="allow_comment">
+                        <input type="checkbox" name="is_commentable" id="allow_comment" checked>
                     </div>
                     <!-- <div class="post_options_class">
                         <img src="{% static 'img/logo/hide.svg' %}" alt="like">

@@ -8,11 +8,17 @@ from itertools import chain
 from django.db.models import Value
 from django.db.models.fields import CharField 
 from django.contrib import messages
+import datetime
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # Create your views here.
 def home(request):
+    logger.info('Homepage was accessed at '+str(datetime.datetime.now())+' hours!')
      # 使用 prefetch_related 预取 Post 关联的 PostImage
-    posts = Post.objects.prefetch_related('images').all().order_by('-created_at')
+    posts = Post.objects.filter(is_public=True).prefetch_related('images').all().order_by('-created_at')
     return render(request,'base.html',{'posts':posts})
 
 def navbar(request):
@@ -34,6 +40,7 @@ def login_view(request):
                 login(request, user)
                 return redirect('home')  # 登录成功后跳转到个人资料页面
             else:
+                logger.error('Login failed for user '+email+' at '+str(datetime.datetime.now())+' hours!')
                 return render(request, 'login.html', {'form': form})
         else:
             return render(request, 'login.html', {'form': form})
@@ -121,7 +128,7 @@ def sendPost_view(request):
             images = request.FILES.getlist('post_images')
             for image in images:
                 PostImage.objects.create(post=post, image=image)
-
+            logger.info('Post '+str(post.post_id)+' was created at '+str(datetime.datetime.now())+' hours!')
             return redirect('home')  # 重定向到首页
     else:
         post_form = PostForm()
@@ -233,3 +240,11 @@ def notification_view(request):
     follows = flowsUser.objects.filter(following=request.user).order_by('-created_at')
     print(follows)
     return render(request, 'notification.html', {'comments': comments, 'combined': combined, 'follows': follows})
+
+def search_view(request):
+    if request.method == 'POST':
+        keyword = request.POST.get('keyword')
+        posts = Post.objects.filter(title__icontains=keyword)
+        return render(request,'base.html', {'posts': posts, 'keyword': keyword})
+    else:
+        return redirect('home')

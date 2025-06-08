@@ -179,6 +179,18 @@ width: calc(20% - 16px);
     margin-left: auto;
     margin-right: 5px;
 }
+
+.tooltip{
+position: absolute;
+top: 10px;
+left: 10px;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 12px;
+display: block;
+}
 </style>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
@@ -259,6 +271,11 @@ width: calc(20% - 16px);
                             {% if first_image %}
                             <a href="{% url 'post_detail' post.post_id %}">
                                 <img src="{{ first_image.image.url }}" alt="{{ post.title }}">
+                                {% if not post.is_public %}
+                                <div class="tooltip">
+                                    Only Yourself see
+                                </div>
+                                {% endif %}
                             </a>
                             {% else %}
                                 <p>No image available</p>
