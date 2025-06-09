@@ -28,6 +28,7 @@ def navbar(request):
 def sendPost(request):
     return render(request,'sendPost.html')
 
+#login view
 def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
@@ -38,7 +39,7 @@ def login_view(request):
             user = authenticate(request, email=email, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # 登录成功后跳转到个人资料页面
+                return redirect('home')  # After login, redirect to home page
             else:
                 logger.error('Login failed for user '+email+' at '+str(datetime.datetime.now())+' hours!')
                 return render(request, 'login.html', {'form': form})
@@ -48,47 +49,47 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
 
-
+#register view
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             print('valid')
             user = form.save()
-            login(request, user)  # 注册成功后自动登录
-            return redirect('home')  # 跳转到个人资料页面
+            login(request, user)  # auto login after registration
+            return redirect('home')  # After registration, redirect to home page
         else:
-            # 打印或返回表单错误信息
-            print(form)
             return render(request, 'login.html', {'form': form,'show_signup': True,})
     else:
         form = RegisterForm()
     return render(request, 'login.html', {'form': form,'show_signup': True})
 
+#logout view
 def logout_view(request):
     logout(request)
     return redirect('home')
 
-#forgot password
+#forgot password view
 def forgot_password_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         new_password = request.POST.get('password1')
         try:
             user = CustomUser.objects.get(email=email)
-            # 如果密码为空
+            # if password is not set, set it to the new password
             if not new_password:
                 messages.error(request, "Please enter a new password.")
                 return render(request, 'login.html', {'show_forget': True, 'email': email})
-            # 设置新密码
+            # set the new password
             user.set_password(new_password)
             user.save()
-            return redirect('login')  # 跳转到登录页面
+            return redirect('login')  # redirect to login page
         except CustomUser.DoesNotExist:
             messages.error(request, "Email does not exist.")
             return render(request, 'login.html', {'show_forget': True, 'email': email})
     return render(request, 'login.html', {'show_forget': True})
 
+#profile view
 @login_required
 def profile_view(request):
     follows = flowsUser.objects.filter(follower=request.user).count()
@@ -101,13 +102,13 @@ def profile_view(request):
                                              'posts': posts, 
                                              'post_likes': post_likes, 'post_collects': post_collects})
 
-
+#profile edit view
 def profile_edit_view(request):
     if request.method == 'POST':
         user_form = UserEditForm(request.POST,request.FILES,instance=request.user)
         if user_form.is_valid():
             user_form.save()
-            return redirect('profile')  # 重定向到用户个人主页或其他页面
+            return redirect('profile')  # redirect to profile page
     else:
         user_form = UserEditForm(instance=request.user)
     context = {
@@ -116,6 +117,7 @@ def profile_edit_view(request):
     return render(request, 'profile_edit.html', context)
 
 
+#send post view
 def sendPost_view(request):
     if request.method == 'POST':
         post_form = PostForm(request.POST, request.FILES)
@@ -129,23 +131,22 @@ def sendPost_view(request):
             for image in images:
                 PostImage.objects.create(post=post, image=image)
             logger.info('Post '+str(post.post_id)+' was created at '+str(datetime.datetime.now())+' hours!')
-            return redirect('home')  # 重定向到首页
+            return redirect('home') 
     else:
         post_form = PostForm()
     return render(request,'sendPost.html', {'post_form': post_form})
 
 
-
+#post detail view
 def post_detail_view(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comments = Comment.objects.filter(post=post,parent_comment=None).prefetch_related('children_comments','author').order_by('created_at')
     likes = LikesPost.objects.filter(post=post)
     collects = CollectPost.objects.filter(post=post)
-    # 初始值设置为 None 或 False
     is_liked = False
     is_collected = False
     is_followed = False
-    # 只有用户登录了才进行查询
+    # only user logged in can like or collect or follow
     if request.user.is_authenticated:
         is_liked = LikesPost.objects.filter(post=post, user=request.user).exists()
         is_collected = CollectPost.objects.filter(post=post, user=request.user).exists()
@@ -161,12 +162,12 @@ def post_detail_view(request, post_id):
         'is_followed': is_followed,
     })
 
+#comment view
 def submit_comment(request):
     if request.method == 'POST':
         print(request.POST)
         content = request.POST.get('content')
         post_id = request.POST.get('post_id')
-        # print(content, post_id)
         parent_id = request.POST.get('parent_id', None)
         post = get_object_or_404(Post, pk=post_id)
         parent_comment = get_object_or_404(Comment, pk=parent_id) if parent_id else None
@@ -181,6 +182,8 @@ def submit_comment(request):
     else:
         return redirect('home')
 
+
+#like post view
 def toggle_like(request):
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
@@ -197,6 +200,7 @@ def toggle_like(request):
     else:
         return redirect('home')
 
+#collect post view
 def toggle_collect(request):
     if request.method == 'POST':
         post_id = request.POST.get('post_id')
@@ -211,6 +215,7 @@ def toggle_collect(request):
     else:
         return redirect('home')
 
+#follow user view
 def toggle_follow(request):
     if request.method == 'POST':
         user_id = request.POST.get('user_id')
@@ -224,14 +229,15 @@ def toggle_follow(request):
         return redirect('post_detail', post_id=post_id)
     else:
         return redirect('home')
-    
+
+#notification view
 def notification_view(request):
     user_posts = Post.objects.filter(author=request.user).order_by('-created_at')
     comments = Comment.objects.filter(post__in=user_posts).order_by('-created_at')
-    # 获取用户相关帖子的所有点赞和收藏
+    # get all posts, comments, likes, collects
     likes = LikesPost.objects.filter(post__in=user_posts).annotate(action_type=Value('like', output_field=CharField()))
     collects = CollectPost.objects.filter(post__in=user_posts).annotate(action_type=Value('collect', output_field=CharField()))
-    # 合并与排序（Python 层面）
+    # combine likes and collects
     combined = sorted(
         chain(likes, collects),
         key=lambda x: x.created_at,
@@ -241,6 +247,7 @@ def notification_view(request):
     print(follows)
     return render(request, 'notification.html', {'comments': comments, 'combined': combined, 'follows': follows})
 
+#search view
 def search_view(request):
     if request.method == 'POST':
         keyword = request.POST.get('keyword')

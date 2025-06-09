@@ -316,12 +316,6 @@ window.onload = function() {
         </div>
         <div id="sign_up_model_content" class="model_content">
             <h2 style="margin-bottom: 20px;">Sign up</h2>
-                <!-- {% if form.errors %}
-                <div class="signup_error">
-                    <p>Password must contain at least 8 characters</p>
-                    <p> Cannot be entirely numeric.</p>
-                </div>
-                {% endif %} -->
                 {% if form.email.errors %}
                 <div class="signup_error">
                     {% for error in form.email.errors %}

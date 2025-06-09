@@ -304,10 +304,8 @@
         {% csrf_token %}
             <div id="post_left">
                 <img id="post_image_logo" src="{% static 'img/logo/upload.svg' %}" alt="image">
-                <!-- <a id = 'pre_image' href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a> -->
                 <input type="button" id = 'pre_image' class="prev-btn" style="display: none;" value="&#10094;"/>
                 <img id="preview" src="" alt="preview">
-                <!-- <a id="next_image" href="#" style="display: none;"><img src="{% static 'img/logo/camera.svg' %}" height="20px" width="20px" alt="camera"></a> -->
                 <input type="button" id="next_image" class="next-btn" style="display: none;" value="&#10095;">
             </div>
         <div id="post_right">
@@ -322,12 +320,7 @@
                 <div id="post_tags_location">
                     <div id="post_tags">
                         <a href="">#tags</a>
-                        <!-- <a href="">@username</a> -->
                     </div>
-                    <!-- <div id="post_location">
-                        <img src="{% static 'img/logo/adress.svg' %}" alt="address">
-                        <input type="text" name="post_location" placeholder="Location">
-                    </div> -->
                 </div>
                 <div id="post_options">
                     <div id="post_options_public"  class="post_options_class">
