@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+{% load static %}
+{% block include_posts %}{% endblock %}
+{% block notify %}
+<style>
+    p{
+        margin: 0px;
+    }
+    .notify-container {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        margin-left: 20%;
+        width: 50%;
+        margin-top: 20px;
+
+    }
+
+    .notify-header {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #f2f2f2;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .notify-header button{
+        height: 40px;
+        width: 160px;
+        border-radius: 40px;
+        border: none;
+        font-size: 16px;
+        background-color: white;
+
+    }
+
+    .notify-header button:hover {
+        background-color: #f2f2f2;
+    }
+
+    .notify-comment{
+        display: flex;
+        /* display: none; */
+        margin-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1.5px solid #f2f2f2;
+    }
+
+    .notify-comment img:first-child{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+
+    .notify-comment-content {
+        margin-left: 20px;
+    }
+
+    .notify-comment-content p:nth-child(1){
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .notify-comment-content p:nth-child(2){
+        color: #ccc;
+        font-size: 14px;
+    }
+
+    .notify-comment-content p:nth-child(3){
+        margin-top: 5px;
+        font-size: 16px;
+    }
+
+    .notify-comment-content p:nth-child(4){
+        margin-top: 5px;
+        font-size: 15px;
+        color: #ccc;
+    }
+
+    .notify-comment img:last-child{
+        width: 60px;
+        height: 60px;
+        margin-left: auto;
+    }
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const commentsBtn = document.getElementById('comments-btn');
+        const likesBtn = document.getElementById('likes-btn');
+        const followsBtn = document.getElementById('follows-btn');
+        const notifycomments = document.getElementById('notify-comments');
+        const notifylikes = document.getElementById('notify-like-collects');
+        const notifyfollows = document.getElementById('notify-follows');
+
+        commentsBtn.addEventListener('click', function() {
+            notifycomments.style.display = 'block';
+            notifylikes.style.display = 'none';
+            notifyfollows.style.display = 'none';
+            commentsBtn.style.backgroundColor = '#f2f2f2';
+            likesBtn.style.backgroundColor = 'white';
+            followsBtn.style.backgroundColor = 'white';
+        })
+        likesBtn.addEventListener('click', function() {
+            notifycomments.style.display = 'none';
+            notifylikes.style.display = 'block';
+            notifyfollows.style.display = 'none';
+            likesBtn.style.backgroundColor = '#f2f2f2';
+            commentsBtn.style.backgroundColor = 'white';
+            followsBtn.style.backgroundColor = 'white';
+        })
+
+        followsBtn.addEventListener('click', function() {
+            notifycomments.style.display = 'none';
+            notifylikes.style.display = 'none';
+            notifyfollows.style.display = 'block';
+            followsBtn.style.backgroundColor = '#f2f2f2';
+            commentsBtn.style.backgroundColor = 'white';
+            likesBtn.style.backgroundColor = 'white';
+            });
+
+    })
+</script>
+<div class="notify-container">
+    <div class="notify-header">
+        <button id="comments-btn" style="background-color: #f2f2f2;">Comments</button>
+        <button id="likes-btn">Likes&Collections</button>
+        <button id="follows-btn">Follows</button>
+    </div>
+    <div class="notify-content" >
+        <div id="notify-comments">
+            {% for comment in comments %}
+            <div class="notify-comment">
+                <img src="{{comment.author.avatar.url}}" alt="user-image">
+                <div class="notify-comment-content">
+                    <p>{{comment.author.username}}</p>
+                    {% if not comment.parent_comment %}
+                    <p>Comment your post &nbsp; <span>{{comment.created_at|date:"Y-m-d H:i"}}</span></p>
+                    <p>{{comment.content}}</p>
+                    <p>| {{comment.post.title|truncatechars:50}}</p>
+                    {% else %}
+                    <p>Reply to your comment &nbsp; <span>{{comment.created_at|date:"Y-m-d H:i"}}</span></p>
+                    <p>{{comment.content}}</p>
+                    <p>| {{comment.parent_comment.content|truncatechars:35}}</p>
+                    {% endif %}
+                </div>
+                {% with first_image=comment.post.images.all|first %}
+                <img src="{{first_image.image.url}}" alt="post-image">
+                {% endwith %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div id="notify-like-collects"  style="display: none;">
+            {% for item in combined %}
+            <div class='notify-comment'>
+                <img src="{{item.user.avatar.url}}" alt="user-image">
+                <div class="notify-comment-content">
+                    <p>{{item.user.username}}</p>
+                    {% if item.action_type == 'like' %}
+                    <p>Like your post &nbsp; <span>{{item.created_at|date:"Y-m-d H:i"}}</span></p>
+                    {% else %}
+                    <p>Collect your post &nbsp; <span>{{item.created_at|date:"Y-m-d H:i"}}</span></p>
+                    {% endif %}
+                </div>
+                {% with first_image=item.post.images.all|first %}
+                <img src="{{first_image.image.url}}" alt="post-image">
+                {% endwith %}
+            </div>
+            {% endfor %}
+        </div>
+
+        <div id="notify-follows" style="display: none;">
+            {% for follow in follows %}
+            <div class='notify-comment'>
+                <img src="{{follow.follower.avatar.url}}" alt="user-image">
+                <div class="notify-comment-content">
+                    <p>{{follow.follower.username}}</p>
+                    <p>Follow you &nbsp; <span>{{follow.created_at|date:"Y-m-d H:i"}}</span></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+{% endblock %}

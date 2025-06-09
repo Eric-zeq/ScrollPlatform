@@ -2,11 +2,23 @@
         #masonry-container {
             margin: 0 auto;
             max-width: 1200px;
-            }
+        }
+        .grid-sizer {
+        width: calc(20% - 16px);
+        }
+
         /* 单个帖子样式 */
         .post-item {
+            width: calc(20% - 16px); /* 四列，减去左右 margin/padding 影响 */
+            float: left; /* 必须加上 float，Masonry 才能识别排列 */
             margin-bottom: 20px;
+            padding: 0 8px; /* 左右 padding 对应上面的 margin 调整 */
         }
+
+        .post-images {
+            text-align: center;
+        }
+
         /* 图片样式 */
         .post-images img {
             border: 1px solid #ccc;
@@ -34,6 +46,7 @@
         .post-info {
             display: flex;
             align-items: center;
+            justify-content: center;
 
         }
 
@@ -57,13 +70,14 @@
 
 
 </style>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js">
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
   // 等待图片加载完成后再初始化 Masonry
   window.addEventListener('load', function () {
     const container = document.getElementById('masonry-container');
     new Masonry(container, {
       itemSelector: '.post-item',
-    //   columnWidth: 300,     // 可选，用于估算列宽
+      columnWidth: '.grid-sizer',     // 可选，用于估算列宽
       percentPosition: true,
       gutter: 20            // 列间距
     });
@@ -75,6 +89,7 @@
 
 </script>
 <div id="masonry-container">
+    <div class="grid-sizer"></div> <!-- 新增这一行 -->
             {% for post in posts %}
             <div class="post-item">
                 <div id="post-links" class="post-images">

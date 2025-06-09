@@ -6,7 +6,7 @@
 <style>
    #user_account_home {
     width: 100%;
-    margin-left: 30%;
+    /* margin-left: 50%; */
     overflow: auto;
     /* display: none; */
 }
@@ -64,12 +64,14 @@
 
 #home-content {
     margin-top: 50px;
+    /* width: 100%; */
 }
 
 #home-content-menu {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 }
 
 #home-content-menu a {
@@ -97,45 +99,256 @@
 
 #home-content-posts {
     display: block;
-    text-align: center;
 }
 
 #home-content-collections {
     display: none;
-    text-align: center;
 }
 
 #home-content-likes {
     display: none;
+}
+
+/* post */
+
+#masonry-container {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.grid-sizer {
+width: calc(20% - 16px);
+}
+
+/* 单个帖子样式 */
+.post-item {
+    width: calc(20% - 16px); /* 四列，减去左右 margin/padding 影响 */
+    float: left; /* 必须加上 float，Masonry 才能识别排列 */
+    margin-bottom: 20px;
+    padding: 0 8px; /* 左右 padding 对应上面的 margin 调整 */
+}
+
+.post-images {
     text-align: center;
 }
+
+/* 图片样式 */
+.post-images img {
+    border: 1px solid #ccc;
+    max-width:220px;
+    width: auto;
+    object-fit: contain; /* 按比例缩放，不裁剪 */
+    height: auto;
+    max-height: 300px;
+    border-radius: 8px;
+}
+
+.post-images:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.post-item p {
+    margin: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    color: gray;
+}
+
+.post-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.post-info img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.post-info span{
+    color: #666;
+    font-size: 14px;
+}
+.post-info span:last-child {
+    color: #666;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.tooltip{
+position: absolute;
+top: 10px;
+left: 10px;
+background: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 12px;
+display: block;
+}
 </style>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script>
+  // 等待图片加载完成后再初始化 Masonry
+  window.addEventListener('load', function () {
+    const container = document.getElementById('masonry-container');
+    new Masonry(container, {
+      itemSelector: '.post-item',
+      columnWidth: '.grid-sizer',     // 可选，用于估算列宽
+      percentPosition: true,
+      gutter: 20            // 列间距
+    });
+  });
+
+   document.addEventListener('DOMContentLoaded', function () {
+      // 点击菜单项切换内容
+      const posts_menu = document.getElementById('home-content-menu-posts');
+      const collections_menu = document.getElementById('home-content-menu-collections');
+      const likes_menu = document.getElementById('home-content-menu-likes');
+
+      posts_menu.addEventListener('click', function (event) {
+        event.preventDefault();
+        posts_menu.style.backgroundColor = '#f2f2f2';
+        collections_menu.style.backgroundColor = 'white';
+        likes_menu.style.backgroundColor = 'white';
+        document.getElementById('home-content-posts').style.display = 'block';
+        document.getElementById('home-content-collections').style.display = 'none';
+        document.getElementById('home-content-likes').style.display = 'none';
+      });
+
+      collections_menu.addEventListener('click', function (event) {
+        event.preventDefault();
+        posts_menu.style.backgroundColor = 'white';
+        collections_menu.style.backgroundColor = '#f2f2f2';
+        likes_menu.style.backgroundColor = 'white';
+        document.getElementById('home-content-posts').style.display = 'none';
+        document.getElementById('home-content-collections').style.display = 'block';
+        document.getElementById('home-content-likes').style.display = 'none';
+        });
+
+      likes_menu.addEventListener('click', function (event) {
+        event.preventDefault();
+        posts_menu.style.backgroundColor = 'white';
+        collections_menu.style.backgroundColor = 'white';
+        likes_menu.style.backgroundColor = '#f2f2f2';
+        document.getElementById('home-content-posts').style.display = 'none';
+        document.getElementById('home-content-collections').style.display = 'none';
+        document.getElementById('home-content-likes').style.display = 'block';
+        });
+      
+   });
+
+</script>
 <div id="user_account_home">
     <div id="user_account_home_header">
         <img src="{{ user.avatar.url }}" alt="user-image">
         <div id="user_account_home_header_info">
             <h1>{{ user.username }}</h1>
             <p>Joined on {{ user.date_joined|date:"F d, Y" }}</p>
-
             <P>Email:<span>&nbsp;{{ user.email }}</span></P>
             <div id="user_account_home_header_info_bio"><span>Bio:&nbsp;&nbsp;</span>{{ user.bio }}</div>
-            <p><span>20&nbsp;</span></span><a href="">followers</a><span>&nbsp;&nbsp;&nbsp;&nbsp;58&nbsp;</span><a href="">following</a></p>
+            <p><span>{{follows}}&nbsp;</span></span><a href="">followers</a><span>&nbsp;&nbsp;&nbsp;&nbsp;{{followed}}&nbsp;</span><a href="">followed</a></p>
         </div>
     </div>
+    <div id="home-content-menu">
+            <a id="home-content-menu-posts" style="background-color: #f2f2f2;" href="#">Posts</a>
+            <a id="home-content-menu-collections" href="#">Collections</a>
+            <a id="home-content-menu-likes" href="#">Likes</a>
+    </div>
     <div id="home-content">
-        <div id="home-content-menu">
-            <a id="home-content-menu-posts" style="background-color: #f2f2f2;" onclick="choose_home(this.id)" href="#">Posts</a>
-            <a id="home-content-menu-collections" onclick="choose_home(this.id)" href="#">Collections</a>
-            <a id="home-content-menu-likes" onclick="choose_home(this.id)" href="#">Likes</a>
-        </div>
         <div id="home-content-posts">
-            No posts yet.
+            <div id="masonry-container">
+                <div class="grid-sizer"></div> <!-- 新增这一行 -->
+                {% for post in posts %}
+                <div class="post-item">
+                    <div id="post-links" class="post-images">
+                        {% with first_image=post.images.all|first %}
+                            {% if first_image %}
+                            <a href="{% url 'post_detail' post.post_id %}">
+                                <img src="{{ first_image.image.url }}" alt="{{ post.title }}">
+                                {% if not post.is_public %}
+                                <div class="tooltip">
+                                    Only Yourself see
+                                </div>
+                                {% endif %}
+                            </a>
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <p>{{ post.title|truncatechars:30 }}</p>
+                    <div class="post-info">
+                        <img src="{{ post.author.avatar.url }}" alt="{{ post.author.username }}">
+                        <span>{{ post.author.username }}</span>
+                        <span>{{ post.created_at|date:"Y-m-d" }}</span>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No sent posts available.</p>
+                {% endfor %}
+            </div>
         </div>
         <div id="home-content-collections">
-            No collections yet.
+            <div id="masonry-container">
+                <div class="grid-sizer"></div> <!-- 新增这一行 -->
+                {% for collect in post_collects %}
+                <div class="post-item">
+                    <div id="post-links" class="post-images">
+                        {% with first_image=collect.post.images.all|first %}
+                            {% if first_image %}
+                            <a href="{% url 'post_detail' collect.post.post_id %}">
+                                <img src="{{ first_image.image.url }}" alt="{{ collect.post.title }}">
+                            </a>
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <p>{{ collect.post.title|truncatechars:30 }}</p>
+                    <div class="post-info">
+                        <img src="{{ collect.post.author.avatar.url }}" alt="{{ collect.post.author.username }}">
+                        <span>{{ collect.post.author.username }}</span>
+                        <span>{{ collect.post.created_at|date:"Y-m-d" }}</span>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No collection posts available.</p>
+                {% endfor %}
+            </div>
         </div>
         <div id="home-content-likes">
-            No likes yet.
+            <div id="masonry-container">
+                <div class="grid-sizer"></div> <!-- 新增这一行 -->
+                {% for like in post_likes %}
+                <div class="post-item">
+                    <div id="post-links" class="post-images">
+                        {% with first_image=like.post.images.all|first %}
+                            {% if first_image %}
+                            <a href="{% url 'post_detail' like.post.post_id %}">
+                                <img src="{{ first_image.image.url }}" alt="{{ like.post.title }}">
+                            </a>
+                            {% else %}
+                                <p>No image available</p>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <p>{{ like.post.title|truncatechars:30 }}</p>
+                    <div class="post-info">
+                        <img src="{{ like.post.author.avatar.url }}" alt="{{ like.post.author.username }}">
+                        <span>{{ like.post.author.username }}</span>
+                        <span>{{ like.post.created_at|date:"Y-m-d" }}</span>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No Like posts available.</p>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </div>

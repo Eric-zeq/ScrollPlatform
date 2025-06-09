@@ -53,9 +53,6 @@ class Post(models.Model):
         return self.title
     
 
-
-
-
 #PostImage model
 class PostImage(models.Model):
     post = models.ForeignKey(Post, related_name='images', on_delete=models.CASCADE)
@@ -66,3 +63,53 @@ class PostImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.post.title}"
+    
+
+#Comment model
+class Comment(models.Model):
+    comment_id = models.AutoField(primary_key=True)  # 评论ID
+    content = models.TextField()  # 内容
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='comments')  # 作者
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')  # 文章
+    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, related_name='children_comments', null=True, blank=True)  # 父评论
+    created_at = models.DateTimeField(auto_now_add=True)  # 创建时间
+    updated_at = models.DateTimeField(auto_now=True)  # 更新时间
+
+    def __str__(self):
+        return f"Comment by {self.author.username} on {self.post.title}"
+
+
+#Like model
+class LikesPost(models.Model):
+    like_id = models.AutoField(primary_key=True)  # 喜欢ID
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='likes_post')  # 用户
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='likes_post')  # 文章
+    created_at = models.DateTimeField(auto_now_add=True)  # 创建时间
+    updated_at = models.DateTimeField(auto_now=True)  # 更新时间
+
+    def __str__(self):
+        return f"Like by {self.user.username} on {self.post.title}"
+
+
+#Collect model
+class CollectPost(models.Model):
+    collect_id = models.AutoField(primary_key=True)  # 收藏ID
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='collect_post')  # 用户
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='collect_post')  # 文章
+    created_at = models.DateTimeField(auto_now_add=True)  # 创建时间
+    updated_at = models.DateTimeField(auto_now=True)  # 更新时间
+
+    def __str__(self):
+        return f"Collect by {self.user.username} on {self.post.title}"
+
+#follow model
+class flowsUser(models.Model):
+    follow_id = models.AutoField(primary_key=True)  # 关注ID
+    follower = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='follower')  # 关注者
+    following = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='following')  # 被关注者
+    created_at = models.DateTimeField(auto_now_add=True)  # 创建时间
+    updated_at = models.DateTimeField(auto_now=True)  # 更新时间
+
+    def __str__(self):
+        return f"Follow by {self.follower.username} on {self.following.username}"
+

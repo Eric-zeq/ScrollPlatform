@@ -1,0 +1,494 @@
+INFO Watching for file changes with StatReloader
+INFO /Users/zhangqing/Downloads/webFinalProject/ScrollPlatform/scrollplatform/scrollplatform/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO Homepage was accessed at 2025-06-08 14:45:42.275785 hours!
+INFO "GET / HTTP/1.1" 200 15945
+INFO /Users/zhangqing/Downloads/webFinalProject/ScrollPlatform/scrollplatform/scrollplatform/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+INFO Homepage was accessed at 2025-06-08 14:55:09.305812 hours!
+INFO "GET / HTTP/1.1" 200 15957
+WARNING Forbidden (CSRF token missing.): /search_view
+WARNING "POST /search_view HTTP/1.1" 403 2491
+INFO Homepage was accessed at 2025-06-08 14:56:06.474521 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "POST /search_view HTTP/1.1" 200 12436
+INFO "GET /post_detail/2 HTTP/1.1" 200 39748
+INFO "GET /static/img/logo/off.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/d7552e3f-ac27-4ce6-8164-b0ec53eeadc5.png HTTP/1.1" 304 0
+INFO "GET /static/img/logo/fo.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/f40dcdf3-049a-44bb-8f9b-bdf25abf872b.png HTTP/1.1" 304 0
+INFO "GET /static/img/logo/review.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/7048ee21-aabd-4baa-acf4-b652d6b8ed71.png HTTP/1.1" 304 0
+INFO "GET /static/img/logo/share.svg HTTP/1.1" 304 0
+INFO "GET /media/avatars/dog.png HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-08 14:56:24.023923 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO Homepage was accessed at 2025-06-08 14:59:27.843328 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /post_detail/7 HTTP/1.1" 200 29990
+INFO "GET /media/post_images/post_7/bbd38dca-0315-4d9d-9659-4d90a6bd57d9.jpeg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_7/bfeb7715-72b6-4f3d-99b2-1513dc348572.jpeg HTTP/1.1" 304 0
+INFO "GET /post_detail/7 HTTP/1.1" 200 30090
+INFO "GET /post_detail/7 HTTP/1.1" 200 30090
+INFO Homepage was accessed at 2025-06-08 15:00:27.739366 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /post_detail/7 HTTP/1.1" 200 30090
+INFO "GET /post_detail/7 HTTP/1.1" 200 29787
+INFO "GET /post_detail/7 HTTP/1.1" 200 29787
+INFO Homepage was accessed at 2025-06-08 15:01:21.154508 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "POST /search_view HTTP/1.1" 200 12436
+INFO "GET /post_detail/1 HTTP/1.1" 200 30825
+INFO "GET /post_detail/1 HTTP/1.1" 200 30857
+INFO "GET /search_view HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-08 15:05:05.880106 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "POST /search_view HTTP/1.1" 200 12436
+INFO "GET /post_detail/1 HTTP/1.1" 200 30857
+INFO "GET /search_view HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-08 15:05:13.601910 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "POST /search_view HTTP/1.1" 200 12436
+INFO "GET /post_detail/1 HTTP/1.1" 200 30857
+INFO "GET /search_view HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-08 15:06:22.054048 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO Homepage was accessed at 2025-06-08 15:06:48.515848 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO Homepage was accessed at 2025-06-08 15:06:52.431790 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /post_detail/7 HTTP/1.1" 200 29811
+INFO "GET /post_detail/7 HTTP/1.1" 200 29811
+INFO "POST /search_view HTTP/1.1" 200 12436
+INFO "GET /post_detail/1 HTTP/1.1" 200 30849
+INFO "GET /post_detail/1 HTTP/1.1" 200 30849
+INFO "GET /post_detail/2 HTTP/1.1" 200 39870
+INFO Homepage was accessed at 2025-06-08 15:07:12.585303 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /post_detail/5 HTTP/1.1" 200 29030
+INFO "GET /static/img/logo/unfo.svg HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-08 15:07:33.699930 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /sendPost HTTP/1.1" 200 20658
+INFO "GET /static/img/logo/upload.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/public.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/saved.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/noComment.svg HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-08 15:07:44.125552 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /sendPost HTTP/1.1" 200 20658
+INFO Homepage was accessed at 2025-06-08 15:07:52.558949 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /notification HTTP/1.1" 200 24576
+INFO Homepage was accessed at 2025-06-08 15:07:57.037329 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /profile HTTP/1.1" 200 23196
+INFO "GET /sendPost HTTP/1.1" 200 20658
+INFO Homepage was accessed at 2025-06-08 15:08:04.573759 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO /Users/zhangqing/Downloads/webFinalProject/ScrollPlatform/scrollplatform/scroll_app/views/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO Homepage was accessed at 2025-06-08 15:08:46.404100 hours!
+INFO "GET / HTTP/1.1" 200 16095
+INFO "GET /post_detail/7 HTTP/1.1" 200 29811
+INFO "GET /post_detail/7 HTTP/1.1" 200 29811
+INFO "GET /post_detail/7 HTTP/1.1" 200 29954
+INFO "GET /post_detail/7 HTTP/1.1" 200 29837
+INFO "GET /sendPost HTTP/1.1" 200 20658
+INFO "GET /sendPost HTTP/1.1" 200 20674
+INFO "GET /sendPost HTTP/1.1" 200 20673
+INFO "GET /sendPost HTTP/1.1" 200 20666
+INFO "GET /sendPost HTTP/1.1" 200 20674
+INFO "GET /sendPost HTTP/1.1" 200 20674
+INFO Post 8 was created at 2025-06-08 15:18:32.766077 hours!
+INFO "POST /sendPost_view HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-08 15:18:32.769901 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 200 192934
+INFO "GET /post_detail/8 HTTP/1.1" 200 29339
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 200 95243
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 200 172089
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 200 223544
+INFO "GET /post_detail/8 HTTP/1.1" 200 29338
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "GET /post_detail/8 HTTP/1.1" 200 23438
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "GET /post_detail/8 HTTP/1.1" 200 28188
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/8 HTTP/1.1" 200 28195
+INFO Homepage was accessed at 2025-06-08 15:22:20.055380 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /profile HTTP/1.1" 200 24754
+INFO Homepage was accessed at 2025-06-08 15:22:31.488494 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /post_detail/8 HTTP/1.1" 200 28195
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "GET /profile HTTP/1.1" 200 24754
+INFO "GET /profile HTTP/1.1" 200 24845
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /profile HTTP/1.1" 200 25662
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /profile HTTP/1.1" 200 25092
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /sendPost HTTP/1.1" 200 20674
+INFO Homepage was accessed at 2025-06-08 15:31:06.613884 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /profile HTTP/1.1" 200 25092
+INFO "GET /post_detail/8 HTTP/1.1" 200 28195
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "GET /profile HTTP/1.1" 200 25092
+INFO "GET /post_detail/7 HTTP/1.1" 200 29837
+INFO "GET /sendPost HTTP/1.1" 200 20674
+INFO Homepage was accessed at 2025-06-08 15:31:36.613481 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO Homepage was accessed at 2025-06-08 15:31:59.046969 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /sendPost HTTP/1.1" 200 20698
+INFO "GET /profile HTTP/1.1" 200 25092
+INFO "GET /sendPost HTTP/1.1" 200 20698
+INFO "GET /notification HTTP/1.1" 200 25097
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /sendPost HTTP/1.1" 200 20698
+INFO Homepage was accessed at 2025-06-08 15:32:12.267718 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /sendPost HTTP/1.1" 200 20698
+INFO Post 9 was created at 2025-06-08 15:33:15.565656 hours!
+INFO "POST /sendPost_view HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-08 15:33:15.570435 hours!
+INFO "GET / HTTP/1.1" 200 16823
+INFO "GET /profile HTTP/1.1" 200 26086
+INFO "GET /media/post_images/post_9/d13c949f-3f91-4bb5-abf7-ae0f51d465da.JPG HTTP/1.1" 200 141415
+INFO "GET /post_detail/9 HTTP/1.1" 200 29035
+INFO "GET /media/post_images/post_9/d13c949f-3f91-4bb5-abf7-ae0f51d465da.JPG HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_9/4b8d023e-010f-40e2-86a0-38e29f9f2f37.jpeg HTTP/1.1" 200 2206908
+INFO "GET /post_detail/9 HTTP/1.1" 200 29035
+INFO "GET /media/post_images/post_9/4b8d023e-010f-40e2-86a0-38e29f9f2f37.jpeg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_9/d13c949f-3f91-4bb5-abf7-ae0f51d465da.JPG HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-08 16:19:11.083386 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+ERROR Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 16:37:31.051411 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 16:37:37.113631 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 16:38:02.601158 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 16:41:58.142191 hours!
+INFO Homepage was accessed at 2025-06-08 16:42:34.714341 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/review.svg
+WARNING Not Found: /static/img/logo/share.svg
+WARNING Not Found: /media/
+WARNING Not Found: /static
+WARNING Not Found: /static/img/logo/adress.svg
+INFO Homepage was accessed at 2025-06-08 16:56:22.998667 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 16:56:52.033821 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 16:56:56.708403 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png
+WARNING Not Found: /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png
+WARNING Not Found: /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/review.svg
+WARNING Not Found: /static/img/logo/share.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /media/post_images/post_7/bbd38dca-0315-4d9d-9659-4d90a6bd57d9.jpeg
+WARNING Not Found: /media/post_images/post_7/bfeb7715-72b6-4f3d-99b2-1513dc348572.jpeg
+WARNING Not Found: /static/img/logo/review.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /media/post_images/post_6/21b52660-d589-4348-8847-569c752f1aa9.jpeg
+WARNING Not Found: /media/post_images/post_6/fa260399-dca8-4266-8377-32718aa496b9.jpeg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 16:59:57.095713 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 17:01:32.925973 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 17:01:51.584828 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /media/avatars/cat.png
+WARNING Not Found: /media/post_images/post_6/d95bcf07-9264-464d-9426-dc3afabd5c2b.webp
+WARNING Not Found: /media/post_images/post_7/cd428261-2152-4323-a747-2fead48e0191.jpeg
+WARNING Not Found: /media/post_images/post_5/540f2041-ed6f-4792-94ce-9b4f22fa35fe.png
+WARNING Not Found: /media/avatars/user.png
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /media/post_images/post_4/0e79a47b-dd73-457a-a6aa-6c1d75c3b209.jpeg
+WARNING Not Found: /media/post_images/post_3/60489762-86ba-4e7e-b91f-d256a872097c.png
+WARNING Not Found: /media/post_images/post_2/9e36b5a3-e285-442c-9580-8e13a4548026.png
+WARNING Not Found: /media/post_images/post_1/689ea596-6395-425b-bca5-90c33d3b025e.png
+WARNING Not Found: /media/avatars/cat.png
+WARNING Not Found: /media/avatars/user.png
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:02:25.432335 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:02:39.481452 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /media/avatars/cat.png
+WARNING Not Found: /media/post_images/post_7/cd428261-2152-4323-a747-2fead48e0191.jpeg
+WARNING Not Found: /media/post_images/post_6/d95bcf07-9264-464d-9426-dc3afabd5c2b.webp
+WARNING Not Found: /media/post_images/post_5/540f2041-ed6f-4792-94ce-9b4f22fa35fe.png
+WARNING Not Found: /media/avatars/user.png
+WARNING Not Found: /media/post_images/post_4/0e79a47b-dd73-457a-a6aa-6c1d75c3b209.jpeg
+WARNING Not Found: /media/post_images/post_3/60489762-86ba-4e7e-b91f-d256a872097c.png
+WARNING Not Found: /media/post_images/post_2/9e36b5a3-e285-442c-9580-8e13a4548026.png
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /media/avatars/cat.png
+WARNING Not Found: /media/post_images/post_1/689ea596-6395-425b-bca5-90c33d3b025e.png
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:02:47.262689 hours!
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /media/post_images/post_7/bfeb7715-72b6-4f3d-99b2-1513dc348572.jpeg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/off.svg
+WARNING Not Found: /media/post_images/post_7/bbd38dca-0315-4d9d-9659-4d90a6bd57d9.jpeg
+WARNING Not Found: /static/img/logo/review.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /media/post_images/post_7/cd428261-2152-4323-a747-2fead48e0191.jpeg
+INFO Homepage was accessed at 2025-06-08 17:04:42.017128 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:11:17.833402 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:14:34.896023 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:15:02.471153 hours!
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:17:02.659441 hours!
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:24:16.619515 hours!
+WARNING Not Found: /static/img/logo/logo.jpg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/search.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 17:24:51.120070 hours!
+WARNING Not Found: /static/img/logo/post.svg
+WARNING Not Found: /static/img/logo/discover.svg
+WARNING Not Found: /static/img/logo/notificaiton.svg
+WARNING Not Found: /static/img/logo/more.svg
+WARNING Not Found: /static/img/logo/logo.jpg
+INFO Homepage was accessed at 2025-06-08 18:12:27.400660 hours!
+WARNING Not Found: /static/img/logo/logo.png
+INFO Homepage was accessed at 2025-06-08 18:12:29.901857 hours!
+WARNING Not Found: /static/img/logo/logo.png
+INFO Homepage was accessed at 2025-06-08 18:13:31.261462 hours!
+INFO Homepage was accessed at 2025-06-08 18:13:31.280855 hours!
+WARNING Not Found: /static/img/logo/logo.png
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 18:14:14.355433 hours!
+WARNING Not Found: /static/img/logo/logo.png
+INFO Homepage was accessed at 2025-06-08 18:18:23.601372 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-08 18:18:37.611250 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-09 05:00:10.370579 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-09 05:00:35.923737 hours!
+INFO Homepage was accessed at 2025-06-09 05:03:55.162433 hours!
+INFO Homepage was accessed at 2025-06-09 05:10:22.975685 hours!
+INFO Homepage was accessed at 2025-06-09 05:14:06.139145 hours!
+INFO Homepage was accessed at 2025-06-09 05:15:03.263757 hours!
