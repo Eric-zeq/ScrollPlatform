@@ -23,7 +23,7 @@ EXPOSE 8000
 WORKDIR /app/scrollplatform
 #collect static files
 RUN python manage.py collectstatic --noinput
-#run migrations
+# run migrations
 # RUN python manage.py migrate
 #start server
 CMD ["gunicorn", "scrollplatform.wsgi:application", "--bind", "0.0.0.0:8000"]

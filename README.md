@@ -1,7 +1,7 @@
 # Scroll Plotform 
 ## Introduction
 This project is a lifestyle platform centred on social sharing, aiming to create a comprehensive content community that integrates the exchange of life experiences, travel exploration, product reviews, and learning insights. The platform uses a waterfall layout to display content, combining text and images to provide users with an immersive browsing experience.
-## Functions
+## Function
 #### 1. User Identity Management
     ✅ Registration and Login
     New users can register an account via email and log in with a password.
