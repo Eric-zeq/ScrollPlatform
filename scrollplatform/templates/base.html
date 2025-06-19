@@ -13,14 +13,11 @@
         .header{
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-
+            margin: 10px 8%;
+            padding: 0 10px;
+            
         }
 
-        .header_logo {
-        margin-right: 25%;
-        }
 
         .header_logo img:hover {
             transform: scale(1.1);
@@ -28,7 +25,7 @@
 
         .header_search {
             background-color: #f2f2f2;
-            width: 400px;
+            width: 25%;
             height: 40px;
             border-radius: 50px;
             padding-left: 10px;
@@ -69,22 +66,54 @@
         .container {
             display: flex;
             flex-direction: row;
-            /* align-items: center; */
+            margin: 10px 8%;
+            padding: 0 10px;
         }
 
         .nav_content {
             width: 20%;
+            margin-right: 20px;
         }
 
 
         .post_content {
             width: 80%;
-            margin-top: 20px;
-            /* display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center; */
+
+    
         }
+
+        @media screen and (max-width: 1750px) {
+            .container {
+                margin: 10px 5%;
+            }
+
+            .header {
+                margin: 10px 5%;
+            }
+
+        }
+
+        @media screen and (max-width: 1600px) {
+            .container {
+                margin: 10px 3%;
+            }
+
+            .header {
+                margin: 10px 3%;
+            }
+
+        }
+
+
+         @media screen and (max-width: 1500px) {
+            .container {
+                margin: 10px 0;
+            }
+
+            .header {
+                margin: 10px 0;
+            }
+}
            
         
     </style>

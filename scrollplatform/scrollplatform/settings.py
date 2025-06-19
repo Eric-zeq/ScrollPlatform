@@ -123,7 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static') #生产环境
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # 测试环境test
 
 
 # Default primary key field type

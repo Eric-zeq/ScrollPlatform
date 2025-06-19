@@ -269,7 +269,7 @@ display: block;
                     <div id="post-links" class="post-images">
                         {% with first_image=post.images.all|first %}
                             {% if first_image %}
-                            <a href="{% url 'post_detail' post.post_id %}">
+                            <a href="{% url 'post_detail' post_id=post.post_id%}">
                                 <img src="{{ first_image.image.url }}" alt="{{ post.title }}">
                                 {% if not post.is_public %}
                                 <div class="tooltip">
@@ -302,7 +302,7 @@ display: block;
                     <div id="post-links" class="post-images">
                         {% with first_image=collect.post.images.all|first %}
                             {% if first_image %}
-                            <a href="{% url 'post_detail' collect.post.post_id %}">
+                            <a href="{% url 'post_detail' post_id=collect.post.post_id%}">
                                 <img src="{{ first_image.image.url }}" alt="{{ collect.post.title }}">
                             </a>
                             {% else %}
@@ -330,7 +330,7 @@ display: block;
                     <div id="post-links" class="post-images">
                         {% with first_image=like.post.images.all|first %}
                             {% if first_image %}
-                            <a href="{% url 'post_detail' like.post.post_id %}">
+                            <a href="{% url 'post_detail' post_id=like.post.post_id%}">
                                 <img src="{{ first_image.image.url }}" alt="{{ like.post.title }}">
                             </a>
                             {% else %}
