@@ -149,13 +149,20 @@ button.form-control1 {
         <a id="offpage" href = '{% url "home" %}'><img src="{% static 'img/logo/off.svg' %}" alt="offpage"></a>
         <div id="edit_profile_model_content" class="model_content">
             <h2>Edit Profile</h2>
+            {% if user_form.username.errors %}
+               <div class="signup_error">
+                    {% for error in user_form.username.errors %}
+                    <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <form method="POST" enctype="multipart/form-data" action="{% url 'profile_edit' %}">
                 {% csrf_token %}
                 <div id="preview-avatar">
                     <img id="preview" src="{{user.avatar.url}}" alt="Image Preview">
                     <img id="custom-file-upload" src="{% static 'img/logo/camera.svg' %}" alt="Upload Image">
                 </div>
-                <input id="signup_avatar" type="file" name="avatar" accept="image/*" style="display: none;"><br>
+                <input id="signup_avatar" style="display: none;" type="file" name="avatar" accept="image/*"><br>
                 <input class="form-control1" type="text" name="username" value="{{user.username}}" required><br>
                 <textarea id="signup_bio" name="bio" rows="3">{{user.bio}}</textarea><br>
                 <button class="form-control1" type="submit">Save Changes</button><br>

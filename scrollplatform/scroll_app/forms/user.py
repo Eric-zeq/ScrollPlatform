@@ -21,8 +21,16 @@ class RegisterForm(UserCreationForm):
             raise ValidationError("This email has been registered!")
         return email
 
+
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'avatar', 'bio']  # 允许编辑的字段
+        fields = ['username', 'bio','avatar'] # 允许编辑的字段
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'bio': forms.Textarea(attrs={'class': 'form-control'}),
+            'avatar': forms.FileInput(attrs={'class': 'form-control-file'})
+        }
+
     
+

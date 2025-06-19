@@ -4,12 +4,12 @@
             max-width: 1200px;
         }
         .grid-sizer {
-        width: calc(20% - 16px);
+        width: calc(100% / var(--column-count, 5) - 16px);;
         }
 
         /* 单个帖子样式 */
         .post-item {
-            width: calc(20% - 16px); /* 四列，减去左右 margin/padding 影响 */
+            width: calc(100% / var(--column-count, 5) - 16px);; /* 四列，减去左右 margin/padding 影响 */
             float: left; /* 必须加上 float，Masonry 才能识别排列 */
             margin-bottom: 20px;
             padding: 0 8px; /* 左右 padding 对应上面的 margin 调整 */
@@ -22,7 +22,7 @@
         /* 图片样式 */
         .post-images img {
             border: 1px solid #ccc;
-            max-width:220px;
+            max-width:200px;
             width: auto;
             object-fit: contain; /* 按比例缩放，不裁剪 */
             height: auto;
@@ -68,6 +68,26 @@
             margin-right: 5px;
         }
 
+:root {
+  --column-count: 5; /* 默认4列 */
+}
+
+@media (max-width: 1400px) {
+  :root { --column-count: 4; }
+}
+@media (max-width: 1100px) {
+  :root { --column-count: 3; }
+}
+@media (max-width: 800px) {
+  :root { --column-count: 2; }
+}
+
+@media (max-width: 700px) {
+  :root { --column-count: 1; }
+}
+
+        
+
 
 </style>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
@@ -80,10 +100,10 @@
       columnWidth: '.grid-sizer',     // 可选，用于估算列宽
       percentPosition: true,
       gutter: 20            // 列间距
+
     });
   });
 
-  // 跳转到指定帖子
 
         
 
@@ -96,7 +116,7 @@
                     
                     {% with first_image=post.images.all|first %}
                         {% if first_image %}
-                        <a href="{% url 'post_detail' post.post_id %}">
+                        <a href="{% url 'post_detail' post_id=post.post_id%}">
                             <img src="{{ first_image.image.url }}" alt="{{ post.title }}">
                         </a>
                         {% else %}

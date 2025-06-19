@@ -524,7 +524,7 @@
 
 <div id="overlay"></div>
 <div id="content">
-    <a id="content-close" href="javascript:history.back()"><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
+    <a id="content-close" href="javascript:history.back(-1)"><img src="{% static 'img/logo/off.svg' %}" alt="off"></a>
     <div id="content-body">
         <div id="content-body-left">
             <div id="image-container">
@@ -701,12 +701,10 @@
                     </div>
                 </form>                   
             </div>
-            {% endif %} 
             {%else%}
-            <div>
-                <p>Sorry, this post is not commentable.</p>
+            <div id="post-review"> 
                 <div id="post-review-right">
-                    <form class="post-review-right-form" action="{% url 'like_post'%}" method="post">
+                    <form class="post-review-right-form" action="{% url 'login'%}" method="get">
                         {% csrf_token %}
                         <input type="hidden" value="{{ post.post_id }}" name="post_id">
                         <button id="like-btn" type="submit">
@@ -719,7 +717,7 @@
                         </button>
                         <span>{{likes.count}}</span>
                     </form>
-                    <form class="post-review-right-form" action="{% url 'collect_post'%}" method="post">
+                    <form class="post-review-right-form" action="{% url 'login'%}" method="get">
                         {% csrf_token %}
                         <input type="hidden" value="{{ post.post_id }}" name="post_id">
                         <button id="collect-btn" type="submit">
@@ -743,7 +741,12 @@
                         <img src="{% static 'img/logo/share.svg' %}" alt="share_icon ">
                         </button>
                     </div>
-                </div>    
+                </div>                 
+            </div>
+            {% endif %} 
+            {%else%}
+            <div>
+                <p>Sorry, this post is not commentable.</p> 
             </div>
             {% endif %}
         </div>  

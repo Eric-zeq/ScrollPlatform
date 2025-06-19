@@ -33,7 +33,6 @@ def login_view(request):
     if request.method == 'POST':
         form = LoginForm(data=request.POST)
         if form.is_valid():
-            print('dddddddddeee')
             email = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
@@ -53,8 +52,9 @@ def login_view(request):
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST, request.FILES)
+        print(form.errors)
+        print(form.data)
         if form.is_valid():
-            print('valid')
             user = form.save()
             login(request, user)  # auto login after registration
             return redirect('home')  # After registration, redirect to home page
@@ -103,12 +103,18 @@ def profile_view(request):
                                              'post_likes': post_likes, 'post_collects': post_collects})
 
 #profile edit view
+@login_required
 def profile_edit_view(request):
     if request.method == 'POST':
-        user_form = UserEditForm(request.POST,request.FILES,instance=request.user)
+        data = request.POST
+        files = request.FILES
+        user_form = UserEditForm(data,files,instance=request.user)
+        print(user_form.data)
         if user_form.is_valid():
             user_form.save()
             return redirect('profile')  # redirect to profile page
+        else:
+            print(user_form.errors)  # 👈 加上这一行看具体出错的地方
     else:
         user_form = UserEditForm(instance=request.user)
     context = {
