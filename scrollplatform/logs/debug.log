@@ -5010,3 +5010,129 @@ INFO "GET /profile_edit HTTP/1.1" 200 15799
 INFO "POST /profile_edit HTTP/1.1" 200 15992
 INFO "POST /profile_edit HTTP/1.1" 302 0
 INFO "GET /profile HTTP/1.1" 200 17512
+INFO Watching for file changes with StatReloader
+INFO Homepage was accessed at 2025-06-20 11:43:09.683651 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /static/img/logo/discover.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/search.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/post.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_10/3bc6bd05-3f9c-4435-95fa-995ef150fd1b.png HTTP/1.1" 304 0
+INFO "GET /media/avatars/a1.jpeg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/more.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/6d4a3c6c-60cf-472d-82a4-395813e4e08a.png HTTP/1.1" 304 0
+INFO "GET /static/img/logo/notificaiton.svg HTTP/1.1" 304 0
+INFO "GET /media/avatars/cat.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_3/60489762-86ba-4e7e-b91f-d256a872097c.png HTTP/1.1" 304 0
+INFO "GET /media/avatars/user.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_7/cd428261-2152-4323-a747-2fead48e0191.jpeg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_5/540f2041-ed6f-4792-94ce-9b4f22fa35fe.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_6/d95bcf07-9264-464d-9426-dc3afabd5c2b.webp HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_4/0e79a47b-dd73-457a-a6aa-6c1d75c3b209.jpeg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_1/689ea596-6395-425b-bca5-90c33d3b025e.png HTTP/1.1" 304 0
+INFO "GET /static/img/logo/logo.jpg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/9e36b5a3-e285-442c-9580-8e13a4548026.png HTTP/1.1" 304 0
+WARNING Not Found: /favicon.ico
+WARNING "GET /favicon.ico HTTP/1.1" 404 6996
+INFO Homepage was accessed at 2025-06-20 11:59:14.150847 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO "GET /post_detail/7 HTTP/1.1" 200 31609
+INFO "GET /static/img/logo/off.svg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_7/bbd38dca-0315-4d9d-9659-4d90a6bd57d9.jpeg HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_7/bfeb7715-72b6-4f3d-99b2-1513dc348572.jpeg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/unfo.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/review.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/share.svg HTTP/1.1" 304 0
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO "GET /post_detail/7 HTTP/1.1" 200 31609
+INFO "GET /post_detail/8 HTTP/1.1" 200 24023
+INFO "GET /media/post_images/post_8/585aa0b3-7a4e-454c-91f3-915519bba3ba.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/7c734e23-63d3-4730-be1c-c3e18722e01e.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_8/c6544fae-0653-4033-815b-9ce91327be05.png HTTP/1.1" 304 0
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO "GET /post_detail/7 HTTP/1.1" 200 31609
+INFO Homepage was accessed at 2025-06-20 12:02:31.030404 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /post_detail/8 HTTP/1.1" 200 24021
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO "GET /post_detail/7 HTTP/1.1" 200 31607
+INFO Homepage was accessed at 2025-06-20 12:03:05.142844 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO "GET /post_detail/7 HTTP/1.1" 200 31583
+INFO Homepage was accessed at 2025-06-20 12:03:10.521739 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "POST /search_view HTTP/1.1" 200 12279
+INFO Homepage was accessed at 2025-06-20 12:03:17.581029 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "POST /search_view HTTP/1.1" 200 13014
+INFO "GET /post_detail/2 HTTP/1.1" 200 40454
+INFO "GET /media/post_images/post_2/d7552e3f-ac27-4ce6-8164-b0ec53eeadc5.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/7048ee21-aabd-4baa-acf4-b652d6b8ed71.png HTTP/1.1" 304 0
+INFO "GET /media/avatars/dog.png HTTP/1.1" 304 0
+INFO "GET /media/post_images/post_2/f40dcdf3-049a-44bb-8f9b-bdf25abf872b.png HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-20 12:03:37.131908 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /post_detail/2 HTTP/1.1" 200 40454
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40447
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40454
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40447
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40454
+INFO "POST /add_like HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40447
+INFO "POST /add_collect HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40454
+INFO "POST /add_collect HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 40447
+INFO "POST /submit_comment HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 41052
+INFO "POST /submit_comment HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 42394
+INFO "POST /add_follow HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 42390
+INFO "GET /static/img/logo/fo.svg HTTP/1.1" 304 0
+INFO "POST /add_follow HTTP/1.1" 302 0
+INFO "GET /post_detail/2 HTTP/1.1" 200 42394
+INFO Homepage was accessed at 2025-06-20 12:09:04.026217 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /notification HTTP/1.1" 200 12712
+INFO Homepage was accessed at 2025-06-20 12:09:07.536438 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /post_detail/3 HTTP/1.1" 200 30518
+INFO "GET /media/post_images/post_3/50148fb3-4ed3-4d0c-ab13-1cd1b09a6b79.png HTTP/1.1" 200 172089
+INFO "GET /media/post_images/post_3/3da38d60-be1b-481a-9119-afd0cd2793ee.png HTTP/1.1" 200 95243
+INFO "GET /media/post_images/post_3/9fc09bbe-cd92-4cd7-abc5-6829f4478128.png HTTP/1.1" 200 192934
+INFO "GET /media/post_images/post_3/dcf4ef47-94a8-4dd7-b241-67c1e73cd146.png HTTP/1.1" 200 223544
+INFO Homepage was accessed at 2025-06-20 12:09:25.944528 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /sendPost HTTP/1.1" 200 20649
+INFO "GET /static/img/logo/upload.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/public.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/noComment.svg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/saved.svg HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-20 12:09:34.370346 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /sendPost HTTP/1.1" 200 20649
+INFO Homepage was accessed at 2025-06-20 12:12:12.974671 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /profile_edit HTTP/1.1" 200 15801
+INFO "GET /static/img/logo/pg.jpeg HTTP/1.1" 304 0
+INFO "GET /static/img/logo/camera.svg HTTP/1.1" 304 0
+INFO Homepage was accessed at 2025-06-20 12:12:29.224454 hours!
+INFO "GET / HTTP/1.1" 200 18107
+INFO "GET /profile HTTP/1.1" 200 16800
+INFO "GET /logout HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-20 12:12:39.798091 hours!
+INFO "GET / HTTP/1.1" 200 17699
+INFO "GET /login HTTP/1.1" 200 20835
+INFO "POST /forgot_password HTTP/1.1" 200 20994
+INFO "POST /forgot_password HTTP/1.1" 302 0
+INFO "GET /login HTTP/1.1" 200 20835
+INFO "POST /login HTTP/1.1" 200 20956
+INFO "POST /login HTTP/1.1" 302 0
+INFO Homepage was accessed at 2025-06-20 12:15:03.095917 hours!
+INFO "GET / HTTP/1.1" 200 18108
