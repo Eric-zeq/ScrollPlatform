@@ -123,8 +123,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static') #生产环境
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # 测试环境test
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') #production environment
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # test environment
 
 
 # Default primary key field type
@@ -181,7 +181,7 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': True,
         },
-        'django': {  # 单独控制 django 的日志
+        'django': {  # silence django loggers
             'handlers': ['file', 'console'],
             'level': 'INFO',
             'propagate': False,

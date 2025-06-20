@@ -4,7 +4,7 @@ from ..models.models import CustomUser
 from django.core.exceptions import ValidationError
 
 class LoginForm(AuthenticationForm):
-    username = forms.EmailField(label="Email")  # 替换默认的用户名为邮箱
+    username = forms.EmailField(label="Email")  # replace username with email
 
 
 class RegisterForm(UserCreationForm):
@@ -25,7 +25,7 @@ class RegisterForm(UserCreationForm):
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'bio','avatar'] # 允许编辑的字段
+        fields = ['username', 'bio','avatar'] # allow user to edit username, bio and avatar only
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control'}),
             'bio': forms.Textarea(attrs={'class': 'form-control'}),

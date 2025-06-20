@@ -11,13 +11,13 @@ class TestSerializers(APITestCase):
             'password': 'password'
         }
 
-        # 创建 post 所需的 author 用户
+        # create author user
         self.author1 = CustomUser.objects.create_user(
             username='testuser2',
             email='test2@test.com',
             password='password'
         )
-        # 创建 comment 所需的 author 用户
+        # create another author user
         self.author2 = CustomUser.objects.create_user(
             username='testuser3',
             email='test3@test.com',
