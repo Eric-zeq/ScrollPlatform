@@ -5136,3 +5136,57 @@ INFO "POST /login HTTP/1.1" 200 20956
 INFO "POST /login HTTP/1.1" 302 0
 INFO Homepage was accessed at 2025-06-20 12:15:03.095917 hours!
 INFO "GET / HTTP/1.1" 200 18108
+ERROR Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform-dev.orb.local'. You may need to add 'nginx.scrollplatform-dev.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform-dev.orb.local'. You may need to add 'nginx.scrollplatform-dev.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform-dev.orb.local'. You may need to add 'nginx.scrollplatform-dev.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform-dev.orb.local'. You may need to add 'nginx.scrollplatform-dev.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+INFO Homepage was accessed at 2025-06-20 12:23:52.932142 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-20 12:24:06.379872 hours!
+WARNING Forbidden (Origin checking failed - http://0.0.0.0:81 does not match any trusted origins.): /login
+WARNING Forbidden (Origin checking failed - http://0.0.0.0:81 does not match any trusted origins.): /login
+INFO Homepage was accessed at 2025-06-20 12:24:49.276564 hours!
+WARNING Not Found: /favicon.ico
+INFO Homepage was accessed at 2025-06-20 12:25:12.290486 hours!
+WARNING Forbidden (Origin checking failed - http://0.0.0.0:81 does not match any trusted origins.): /login
