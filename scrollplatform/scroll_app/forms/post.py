@@ -20,9 +20,9 @@ from ..models.models import Post, Comment
    
 
 class PostForm(forms.ModelForm):
-   forms.ClearableFileInput.allow_multiple_selected = True # 关键属性
+   forms.ClearableFileInput.allow_multiple_selected = True # keyword attribute
    images = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}),
-                            required=False,  # 允许字段为空
+                            required=False,  # allow empty images
                             label="Upload multiple images"
                             )
    

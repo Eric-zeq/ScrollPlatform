@@ -240,17 +240,17 @@
 
 
 
-    // 点击自定义图标时触发文件选择
+    // click button to show file input
     customUpload.addEventListener('click', function () {
         fileInput.click();
     });
 
 
-    let imageList = [];  // 存储所有选中图片的 base64 数据
+    let imageList = [];  // save image list
     let currentIndex = 0;
 
     fileInput.addEventListener('change', function (event) {
-        // 隐藏自定义上传按钮
+        // display none upload button and show preview image
         customUpload.style.display = 'none';
         previewAvatar.style.display = 'block';
         nextBtn.style.display = 'block';
@@ -258,11 +258,11 @@
 
         const files = event.target.files;
         if (!files || files.length === 0) return;
-        imageList = [];  // 清空之前的图片列表
+        imageList = [];  // clean image list
         currentIndex = 0;
         let loadedCount = 0;
 
-        // 读取图片文件
+        // read image file and push to imageList
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             if (!file.type.startsWith('image/')) continue;
@@ -270,7 +270,7 @@
             reader.onload = function (e) {
                 imageList.push(e.target.result);
                 loadedCount++;
-                // 第一张加载完成后立即显示
+                // load first image and show it
                 if (loadedCount === 1) {
                     previewAvatar.src = imageList[currentIndex];
                     
@@ -279,14 +279,14 @@
             reader.readAsDataURL(file);
         }
     });
-    // 切换图片按钮点击事件
+    // change preview image when click next or pre button
     nextBtn.addEventListener('click', function () {
         if (imageList.length === 0) return;
         currentIndex = (currentIndex + 1) % imageList.length;
         previewAvatar.src = imageList[currentIndex];
     });
 
-    // 上一张按钮点击事件
+    // last image when click pre button
     preBtn.addEventListener('click', function () {
         if (imageList.length === 0) return;
         currentIndex = (currentIndex - 1 + imageList.length) % imageList.length;

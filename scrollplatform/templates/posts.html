@@ -7,24 +7,22 @@
         width: calc(100% / var(--column-count, 5) - 16px);;
         }
 
-        /* 单个帖子样式 */
         .post-item {
-            width: calc(100% / var(--column-count, 5) - 16px);; /* 四列，减去左右 margin/padding 影响 */
-            float: left; /* 必须加上 float，Masonry 才能识别排列 */
+            width: calc(100% / var(--column-count, 5) - 16px);; /* five columns - 16px gutter */
+            float: left; /* Masonry needs this */
             margin-bottom: 20px;
-            padding: 0 8px; /* 左右 padding 对应上面的 margin 调整 */
+            padding: 0 8px; /* left/right padding to match margin */
         }
 
         .post-images {
             text-align: center;
         }
 
-        /* 图片样式 */
         .post-images img {
             border: 1px solid #ccc;
             max-width:200px;
             width: auto;
-            object-fit: contain; /* 按比例缩放，不裁剪 */
+            object-fit: contain; 
             height: auto;
             max-height: 300px;
             border-radius: 8px;
@@ -92,14 +90,14 @@
 </style>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
-  // 等待图片加载完成后再初始化 Masonry
+  // after images load, initialize Masonry
   window.addEventListener('load', function () {
     const container = document.getElementById('masonry-container');
     new Masonry(container, {
       itemSelector: '.post-item',
-      columnWidth: '.grid-sizer',     // 可选，用于估算列宽
+      columnWidth: '.grid-sizer',     
       percentPosition: true,
-      gutter: 20            // 列间距
+      gutter: 20            
 
     });
   });
@@ -109,7 +107,7 @@
 
 </script>
 <div id="masonry-container">
-    <div class="grid-sizer"></div> <!-- 新增这一行 -->
+    <div class="grid-sizer"></div> 
             {% for post in posts %}
             <div class="post-item">
                 <div id="post-links" class="post-images">

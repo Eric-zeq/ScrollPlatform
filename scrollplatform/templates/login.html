@@ -248,31 +248,31 @@ button.form-control1 {
 </style>
 <script>
    document.addEventListener('DOMContentLoaded', function () {
-    // 获取模块和链接元素
+    // get link  and module
     const loginModule = document.getElementById('login_model_content');
     const registerModule = document.getElementById('sign_up_model_content');
     const forgetPasswordModule = document.getElementById('forget_password_model_content');
     const switchToRegisterLink = document.getElementById('signup_link');
     const switchToLoginLink = document.querySelectorAll('.login_link');
     const forgetPasswordLink = document.getElementById('forgot_password_link');
-    // 点击“注册”链接时隐藏登录模块，显示注册模块
+    // click 'register' link to show register module
     switchToRegisterLink.addEventListener('click', function (event) {
-        event.preventDefault(); // 阻止默认跳转行为
+        event.preventDefault(); // 
         loginModule.style.display = 'none';
         registerModule.style.display = 'block';
     });
     switchToLoginLink.forEach(function(item){
         item.addEventListener('click', function (event) {
-            event.preventDefault(); // 阻止默认跳转行为
+            event.preventDefault(); // 
             registerModule.style.display = 'none';
             loginModule.style.display = 'block';
             forgetPasswordModule.style.display = 'none'; 
         });  
     });
 
-    // 点击“忘记密码”链接时隐藏登录模块，显示忘记密码模块
+    // click 'forget password' link to show forget password module
     forgetPasswordLink.addEventListener('click', function (event) {
-        event.preventDefault(); // 阻止默认跳转行为
+        event.preventDefault(); // 
         loginModule.style.display = 'none';
         forgetPasswordModule.style.display = 'block';
     });

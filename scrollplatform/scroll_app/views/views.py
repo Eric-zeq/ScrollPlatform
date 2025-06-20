@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 # Create your views here.
 def home(request):
     logger.info('Homepage was accessed at '+str(datetime.datetime.now())+' hours!')
-     # 使用 prefetch_related 预取 Post 关联的 PostImage
+     # use prefetch_related to reduce the number of queries
     posts = Post.objects.filter(is_public=True).prefetch_related('images').all().order_by('-created_at')
     return render(request,'base.html',{'posts':posts})
 
@@ -114,7 +114,7 @@ def profile_edit_view(request):
             user_form.save()
             return redirect('profile')  # redirect to profile page
         else:
-            print(user_form.errors)  # 👈 加上这一行看具体出错的地方
+            print(user_form.errors)  # find out why it's not valid
     else:
         user_form = UserEditForm(instance=request.user)
     context = {
