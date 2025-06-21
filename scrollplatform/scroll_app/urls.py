@@ -3,9 +3,9 @@ from .views import views,view_api
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('api/v1/users', view_api.UserViewSet, basename='user')
-router.register('api/v1/posts', view_api.PostViewSet, basename='post')
-router.register('api/v1/comments', view_api.CommentViewSet, basename='comment')
+router.register('users', view_api.UserViewSet, basename='user')
+router.register('posts', view_api.PostViewSet, basename='post')
+router.register('comments', view_api.CommentViewSet, basename='comment')
 
 urlpatterns = [
     path('', views.home, name='home'),
