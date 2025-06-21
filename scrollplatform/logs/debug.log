@@ -5190,6 +5190,81 @@ INFO Homepage was accessed at 2025-06-20 12:24:49.276564 hours!
 WARNING Not Found: /favicon.ico
 INFO Homepage was accessed at 2025-06-20 12:25:12.290486 hours!
 WARNING Forbidden (Origin checking failed - http://0.0.0.0:81 does not match any trusted origins.): /login
+<<<<<<< HEAD
+INFO Homepage was accessed at 2025-06-20 12:43:02.785252 hours!
+INFO Homepage was accessed at 2025-06-20 12:43:33.389246 hours!
+INFO Homepage was accessed at 2025-06-20 12:45:42.886381 hours!
+INFO Homepage was accessed at 2025-06-20 13:22:33.706885 hours!
+INFO Homepage was accessed at 2025-06-20 13:22:56.585032 hours!
+INFO Homepage was accessed at 2025-06-20 13:23:57.128724 hours!
+INFO Homepage was accessed at 2025-06-20 13:24:15.297728 hours!
+INFO Homepage was accessed at 2025-06-20 13:26:07.230973 hours!
+INFO Homepage was accessed at 2025-06-20 13:30:50.264877 hours!
+INFO Homepage was accessed at 2025-06-20 13:30:52.466814 hours!
+INFO Post 11 was created at 2025-06-20 13:31:25.872605 hours!
+INFO Homepage was accessed at 2025-06-20 13:31:25.877393 hours!
+INFO Homepage was accessed at 2025-06-20 13:31:31.626657 hours!
+INFO Homepage was accessed at 2025-06-20 13:31:58.051141 hours!
+INFO Homepage was accessed at 2025-06-20 13:32:10.991749 hours!
+INFO Homepage was accessed at 2025-06-20 13:32:15.536021 hours!
+INFO Homepage was accessed at 2025-06-20 13:32:21.194513 hours!
+INFO Homepage was accessed at 2025-06-20 13:32:45.317207 hours!
+INFO Homepage was accessed at 2025-06-20 13:33:05.307275 hours!
+INFO Homepage was accessed at 2025-06-20 13:33:22.277583 hours!
+INFO Homepage was accessed at 2025-06-20 13:33:28.435562 hours!
+INFO Homepage was accessed at 2025-06-20 13:33:32.843002 hours!
+INFO Homepage was accessed at 2025-06-20 13:33:40.634447 hours!
+INFO Homepage was accessed at 2025-06-20 13:34:10.587540 hours!
+INFO Homepage was accessed at 2025-06-20 13:34:15.579156 hours!
+INFO Homepage was accessed at 2025-06-20 13:34:19.850927 hours!
+INFO Homepage was accessed at 2025-06-20 13:34:26.568970 hours!
+INFO Homepage was accessed at 2025-06-20 13:34:43.814757 hours!
+ERROR Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '192.168.107.3'. You may need to add '192.168.107.3' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /
+ERROR Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/http/request.py", line 186, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'nginx.scrollplatform.orb.local'. You may need to add 'nginx.scrollplatform.orb.local' to ALLOWED_HOSTS.
+WARNING Bad Request: /favicon.ico
+=======
 WARNING Forbidden (CSRF token from POST incorrect.): /login
 INFO Homepage was accessed at 2025-06-20 12:29:17.136828 hours!
 INFO Homepage was accessed at 2025-06-20 12:29:18.096205 hours!
@@ -5199,3 +5274,4 @@ INFO Homepage was accessed at 2025-06-20 12:29:43.950672 hours!
 INFO Homepage was accessed at 2025-06-20 12:33:01.721488 hours!
 INFO Homepage was accessed at 2025-06-20 12:33:12.255698 hours!
 INFO Homepage was accessed at 2025-06-20 12:33:29.690650 hours!
+>>>>>>> 713336452ba1fe3c0e7ebb9bcf17ca7fe52f1ad0
