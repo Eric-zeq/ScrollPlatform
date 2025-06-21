@@ -70,5 +70,5 @@ docker-compose up -d
 ```
 6. Open website
 ```
-http://0.0.0.0:81
+http://0.0.0.0:8000
 ```
